@@ -1,0 +1,62 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&family=Kodchasan:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+body {
+    min-height: 100vh;
+    font-family: "Kodchasan", sans-serif;
+    /*font-family: "Afacad", sans-serif;*/
+    font-style: normal;
+}
+
+#navDiv {
+    background-color: #023047;
+    font-weight: 700;
+}
+
+#bodyDiv {
+}
+
+#footerDiv {
+}
+
+#footerPara {
+    background-color: #023047;
+    color: white;
+    margin-bottom: 0;
+}
+
+.dashboardDiv {
+    min-height: 84.9vh;
+    display: flex;
+    justify-content: center;
+    padding-top: 25px;
+}
+
+.tabPanel {
+    min-height: 77.5vh;
+}
+
+.centerAll {
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+.btn {
+    background-color: #023047;
+    border: 1px solid #023047;
+    font-weight: 700;
+    min-width: 120px;
+    min-height: 40px;
+}
+
+.addClinic {
+    width: 55vw;
+}
+
+.col-form-label {
+    font-weight: 700;
+}
+
+.font {
+    font-family: "Kodchasan", sans-serif;
+}
