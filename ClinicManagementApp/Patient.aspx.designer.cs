@@ -11,26 +11,26 @@ namespace ClinicManagementApp
 {
 
 
-    public partial class Staff
+    public partial class Patient
     {
 
         /// <summary>
-        /// ScriptManagerStaff control.
+        /// ScriptManagerPatient control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManagerStaff;
+        protected global::System.Web.UI.ScriptManager ScriptManagerPatient;
 
         /// <summary>
-        /// TabContainerStaff control.
+        /// TabContainerPatient control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.TabContainer TabContainerStaff;
+        protected global::AjaxControlToolkit.TabContainer TabContainerPatient;
 
         /// <summary>
         /// TabPanelView control.
@@ -42,13 +42,13 @@ namespace ClinicManagementApp
         protected global::AjaxControlToolkit.TabPanel TabPanelView;
 
         /// <summary>
-        /// GridView_Staff control.
+        /// GridView_Patient control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView_Staff;
+        protected global::System.Web.UI.WebControls.GridView GridView_Patient;
 
         /// <summary>
         /// TabPanelAdd control.
@@ -94,150 +94,6 @@ namespace ClinicManagementApp
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator_Name;
-
-        /// <summary>
-        /// Label_Gender control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_Gender;
-
-        /// <summary>
-        /// DropDownList_Gender control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList_Gender;
-
-        /// <summary>
-        /// RequiredFieldValidator_Gender control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_Gender;
-
-        /// <summary>
-        /// Label_Aadhar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_Aadhar;
-
-        /// <summary>
-        /// TextBox_Aadhar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_Aadhar;
-
-        /// <summary>
-        /// RequiredFieldValidator_Aadhar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_Aadhar;
-
-        /// <summary>
-        /// Label_DOB control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_DOB;
-
-        /// <summary>
-        /// TextBox_DOB control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_DOB;
-
-        /// <summary>
-        /// Label_DOJ control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_DOJ;
-
-        /// <summary>
-        /// TextBox_DOJ control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_DOJ;
-
-        /// <summary>
-        /// Label_Qualification control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_Qualification;
-
-        /// <summary>
-        /// DropDownList_Qualification control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList_Qualification;
-
-        /// <summary>
-        /// Label_Experience control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_Experience;
-
-        /// <summary>
-        /// TextBox_Experience control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_Experience;
-
-        /// <summary>
-        /// Label_WorkType control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_WorkType;
-
-        /// <summary>
-        /// DropDownList_WorkType control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList_WorkType;
 
         /// <summary>
         /// Label_Address control.
@@ -321,6 +177,51 @@ namespace ClinicManagementApp
         protected global::System.Web.UI.WebControls.TextBox TextBox_Pincode;
 
         /// <summary>
+        /// Label_Gender control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label_Gender;
+
+        /// <summary>
+        /// DropDownList_Gender control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_Gender;
+
+        /// <summary>
+        /// RequiredFieldValidator_Gender control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_Gender;
+
+        /// <summary>
+        /// Label_DOB control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label_DOB;
+
+        /// <summary>
+        /// TextBox_DOB control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_DOB;
+
+        /// <summary>
         /// Label_Contact control.
         /// </summary>
         /// <remarks>
@@ -393,40 +294,67 @@ namespace ClinicManagementApp
         protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator_Email;
 
         /// <summary>
-        /// Label_Password control.
+        /// Label_Reference control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_Password;
+        protected global::System.Web.UI.WebControls.Label Label_Reference;
 
         /// <summary>
-        /// TextBox_Password control.
+        /// TextBox_Reference control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_Password;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Reference;
 
         /// <summary>
-        /// RequiredFieldValidator_Password control.
+        /// Label_BloodGroup control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_Password;
+        protected global::System.Web.UI.WebControls.Label Label_BloodGroup;
 
         /// <summary>
-        /// RegularExpressionValidator_Password control.
+        /// DropDownList_BloodGroup control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator_Password;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_BloodGroup;
+
+        /// <summary>
+        /// Label_Registration control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label_Registration;
+
+        /// <summary>
+        /// TextBox_Registration control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Registration;
+
+        /// <summary>
+        /// RequiredFieldValidator_Registration control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_Registration;
 
         /// <summary>
         /// Button_Save control.
@@ -445,5 +373,68 @@ namespace ClinicManagementApp
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button_Clear;
+
+        /// <summary>
+        /// TabContainerPatientMoreDetails control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.TabContainer TabContainerPatientMoreDetails;
+
+        /// <summary>
+        /// TabPanelAllergy control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.TabPanel TabPanelAllergy;
+
+        /// <summary>
+        /// GridViewAllergy control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridViewAllergy;
+
+        /// <summary>
+        /// TabPanelChronic control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.TabPanel TabPanelChronic;
+
+        /// <summary>
+        /// GridViewChronic control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridViewChronic;
+
+        /// <summary>
+        /// TabPanelMedication control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.TabPanel TabPanelMedication;
+
+        /// <summary>
+        /// GridViewMedication control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridViewMedication;
     }
 }

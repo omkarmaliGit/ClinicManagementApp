@@ -6,6 +6,7 @@
 <head runat="server">
     <title></title>
     <link type="text/css" href="../Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/CustomCSS/site.css" rel="stylesheet" />
 </head>
 <body>
     <div class="container d-flex justify-content-center align-items-center" style="min-height: 95vh">

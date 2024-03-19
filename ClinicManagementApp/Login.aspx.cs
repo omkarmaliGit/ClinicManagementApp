@@ -15,7 +15,10 @@ namespace ClinicManagementApp
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["adminID"] != null)
+            {
+                Response.Redirect("DashBoard.aspx");
+            }
         }
 
         protected void Button_Login_Click(object sender, EventArgs e)
@@ -28,8 +31,8 @@ namespace ClinicManagementApp
                 {
                     if (reader[0].ToString() == TextBox_Password.Text)
                     {
-                        Session["adminID"] = reader[2].ToString();
-                        Response.Redirect("../Default.aspx");
+                        Session["adminID"] = reader[1].ToString();
+                        Response.Redirect("DashBoard.aspx");
                     }
                     else
                     {

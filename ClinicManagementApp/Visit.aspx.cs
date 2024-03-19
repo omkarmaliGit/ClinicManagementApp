@@ -7,17 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace ClinicManagementApp
 {
-    public partial class Site : System.Web.UI.MasterPage
+    public partial class Visit : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
-        }
-
-        protected void LinkButton_Logout_Click(object sender, EventArgs e)
-        {
-            Session.Clear();
-            Response.Redirect("Login.aspx");
         }
     }
 }
