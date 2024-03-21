@@ -16,7 +16,7 @@
                 <div class="col">
                     <asp:TextBox ID="TextBox_Name" runat="server" type="text" placeholder="Enter Name" class="form-control"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator_Name" runat="server" ErrorMessage="Please Enter Name" ControlToValidate="TextBox_Name" ForeColor="Red"></asp:RequiredFieldValidator>
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator_Name" runat="server" ErrorMessage="Only Characters Allowed" ControlToValidate="TextBox_Name" ValidationExpression="^[a-zA-Z]+$" ForeColor="Red"></asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator_Name" runat="server" ErrorMessage="Only Characters Allowed" ControlToValidate="TextBox_Name" ValidationExpression="^[a-zA-Z ]+$" ForeColor="Red"></asp:RegularExpressionValidator>
                 </div>
             </div>
 

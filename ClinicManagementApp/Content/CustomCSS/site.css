@@ -26,8 +26,7 @@ body {
 
 .dashboardDiv {
     min-height: 84.9vh;
-    display: flex;
-    justify-content: center;
+    /*text-align:center;*/
     padding-top: 25px;
 }
 
@@ -59,4 +58,18 @@ body {
 
 .font {
     font-family: "Kodchasan", sans-serif;
+}
+
+h5 {
+    color: #023047;
+    padding-block: 10px;
+    font-weight: 700;
+}
+
+.smallBox{
+    width:50px;
+}
+
+.smallLabel {
+    font-weight:500;
 }

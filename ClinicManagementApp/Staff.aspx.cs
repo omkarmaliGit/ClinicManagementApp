@@ -117,7 +117,6 @@ namespace ClinicManagementApp
             TextBox_Name.Focus();
         }
 
-
         protected void GridView_Staff_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             GridViewRow row = GridView_Staff.Rows[e.RowIndex];

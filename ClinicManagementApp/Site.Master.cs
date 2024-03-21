@@ -11,12 +11,15 @@ namespace ClinicManagementApp
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["adminID"] == null)
+            {
+                Response.Redirect("Login.aspx");
+            }
         }
 
         protected void LinkButton_Logout_Click(object sender, EventArgs e)
         {
-            Session.Clear();
+            Session["adminId"] = null;
             Response.Redirect("Login.aspx");
         }
     }

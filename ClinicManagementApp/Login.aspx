@@ -13,6 +13,7 @@
         <form id="form1" runat="server">
 
             <div class="mb-3 text-center">
+                <asp:Image ID="ImageLogin" runat="server" ImageUrl="~/Images/profile.png" Width="75px" class="pb-4"/>
                 <h1>Admin Login</h1>
                 <br />
             </div>

@@ -402,6 +402,33 @@ namespace ClinicManagementApp
         protected global::System.Web.UI.WebControls.GridView GridViewAllergy;
 
         /// <summary>
+        /// TextBox_AllergyAdd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_AllergyAdd;
+
+        /// <summary>
+        /// TextBox_AllergyStartDateAdd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_AllergyStartDateAdd;
+
+        /// <summary>
+        /// Button_AllergyAdd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_AllergyAdd;
+
+        /// <summary>
         /// TabPanelChronic control.
         /// </summary>
         /// <remarks>
@@ -420,6 +447,33 @@ namespace ClinicManagementApp
         protected global::System.Web.UI.WebControls.GridView GridViewChronic;
 
         /// <summary>
+        /// TextBox_ChronicAdd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_ChronicAdd;
+
+        /// <summary>
+        /// TextBox_ChronicStartDateAdd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_ChronicStartDateAdd;
+
+        /// <summary>
+        /// Button_ChronicAdd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_ChronicAdd;
+
+        /// <summary>
         /// TabPanelMedication control.
         /// </summary>
         /// <remarks>
@@ -436,5 +490,32 @@ namespace ClinicManagementApp
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridViewMedication;
+
+        /// <summary>
+        /// TextBox_Medication control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Medication;
+
+        /// <summary>
+        /// DropDownList_Frequency control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_Frequency;
+
+        /// <summary>
+        /// Button_Medicine control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button_Medicine;
     }
 }

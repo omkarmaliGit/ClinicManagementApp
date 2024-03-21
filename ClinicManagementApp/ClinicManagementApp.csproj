@@ -89,9 +89,13 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\CustomCSS\site.css" />
-    <Content Include="Content\Images\8581082.jpg" />
+    <Content Include="Images\8581082.jpg" />
     <Content Include="DashBoard.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Images\medicalStoreIcon.ico" />
+    <Content Include="Images\medicalStoreIcon.jpg" />
+    <Content Include="Images\medicalStoreIcon.png" />
+    <Content Include="Images\profile.png" />
     <Content Include="Login.aspx" />
     <Content Include="Patient.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -210,6 +214,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Images\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
