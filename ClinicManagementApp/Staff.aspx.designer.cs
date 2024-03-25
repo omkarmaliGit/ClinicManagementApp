@@ -105,13 +105,13 @@ namespace ClinicManagementApp
         protected global::System.Web.UI.WebControls.Label Label_Gender;
 
         /// <summary>
-        /// DropDownList_Gender control.
+        /// RadioButtonList_Gender control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList_Gender;
+        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList_Gender;
 
         /// <summary>
         /// RequiredFieldValidator_Gender control.
@@ -148,6 +148,15 @@ namespace ClinicManagementApp
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_Aadhar;
+
+        /// <summary>
+        /// RegularExpressionValidator_Aadhar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator_Aadhar;
 
         /// <summary>
         /// Label_DOB control.

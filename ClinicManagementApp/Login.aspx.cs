@@ -38,7 +38,6 @@ namespace ClinicManagementApp
                     {
                         Response.Write("Wrong Password");
                     }
-
                 }
                 else
                 {
@@ -53,7 +52,7 @@ namespace ClinicManagementApp
             {
                 db.CloseConnection();
             }
-
         }
+
     }
 }

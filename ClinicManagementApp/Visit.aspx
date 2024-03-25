@@ -21,10 +21,8 @@
                     <div class="mb-4 row">
                         <asp:Label ID="Label_Registration" runat="server" Text="Registration Number : " class="col-sm-4 col-form-label"></asp:Label>
                         <div class="col">
-                            <asp:DropDownList ID="DropDownList_Registration" runat="server" placeholder="Select Registration Number" class="form-control">
-                                <asp:ListItem>MBBS</asp:ListItem>
-                                <asp:ListItem>B.Pharm</asp:ListItem>
-                                <asp:ListItem>12th</asp:ListItem>
+                            <asp:DropDownList ID="DropDownList_Registration" runat="server" placeholder="Select Registration Number" class="form-select" OnSelectedIndexChanged="DropDownList_Registration_SelectedIndexChanged" AutoPostBack="true">
+                                <%--<asp:ListItem>Select Registration Number</asp:ListItem>--%>
                             </asp:DropDownList>
                         </div>
                     </div>
@@ -32,21 +30,21 @@
                     <div class="mb-4 row">
                         <asp:Label ID="Label_PatientName" runat="server" Text="Patient Name : " class="col-sm-4 col-form-label"></asp:Label>
                         <div class="col">
-                            <asp:Label ID="Label_PatientNameShow" runat="server" Text="" class="col-form-label"></asp:Label>
+                            <asp:TextBox ID="TextBox_PatientName" runat="server" type="text" placeholder="Enter Patient Name" class="form-control" AutoPostBack="true" OnTextChanged="TextBox_PatientName_TextChanged"></asp:TextBox>
                         </div>
                     </div>
 
                     <div class="mb-4 row">
                         <asp:Label ID="Label_Age" runat="server" Text="Age : " class="col-sm-4 col-form-label"></asp:Label>
                         <div class="col">
-                            <asp:Label ID="Label_AgeShow" runat="server" Text="" class="col-form-label"></asp:Label>
+                            <asp:Label ID="Label_AgeShow" runat="server" Text="" class="col-form-label" CssClass="smallLabel"></asp:Label>
                         </div>
                     </div>
 
                     <div class="mb-4 row">
                         <asp:Label ID="Label_BloodGroup" runat="server" Text="Blood Group : " class="col-sm-4 col-form-label"></asp:Label>
                         <div class="col">
-                            <asp:Label ID="Label_BloodGroupShow" runat="server" Text="" class="col-form-label"></asp:Label>
+                            <asp:Label ID="Label_BloodGroupShow" runat="server" Text="" class="col-form-label" CssClass="smallLabel"></asp:Label>
                         </div>
                     </div>
 
@@ -71,7 +69,8 @@
                     <div class="mb-4 row">
                         <asp:Label ID="Label_VisitType" runat="server" Text="Visit Type : " class="col-sm-4 col-form-label"></asp:Label>
                         <div class="col">
-                            <asp:DropDownList ID="DropDownList_VisitType" runat="server" placeholder="Select Visit Type" class="form-control">
+                            <asp:DropDownList ID="DropDownList_VisitType" runat="server" placeholder="Select Visit Type" class="form-select">
+                                <asp:ListItem>Select Visit Type</asp:ListItem>
                                 <asp:ListItem>With Appointment</asp:ListItem>
                                 <asp:ListItem>Without Appointment</asp:ListItem>
                             </asp:DropDownList>
@@ -81,9 +80,8 @@
                     <div class="mb-4 row">
                         <asp:Label ID="Label_Doctor" runat="server" Text="Doctor Name : " class="col-sm-4 col-form-label"></asp:Label>
                         <div class="col">
-                            <asp:DropDownList ID="DropDownList_Doctor" runat="server" placeholder="Select Doctor Name" class="form-control">
-                                <asp:ListItem>With Appointment</asp:ListItem>
-                                <asp:ListItem>Without Appointment</asp:ListItem>
+                            <asp:DropDownList ID="DropDownList_Doctor" runat="server" placeholder="Select Doctor Name" class="form-select">
+                                <%--<asp:ListItem>Select Doctor Name</asp:ListItem>--%>
                             </asp:DropDownList>
                         </div>
                     </div>
@@ -91,9 +89,8 @@
                     <div class="mb-4 row">
                         <asp:Label ID="Label_Staff" runat="server" Text="Staff Name : " class="col-sm-4 col-form-label"></asp:Label>
                         <div class="col">
-                            <asp:DropDownList ID="DropDownList_Staff" runat="server" placeholder="Select Staff Name" class="form-control">
-                                <asp:ListItem>With Appointment</asp:ListItem>
-                                <asp:ListItem>Without Appointment</asp:ListItem>
+                            <asp:DropDownList ID="DropDownList_Staff" runat="server" placeholder="Select Staff Name" class="form-select">
+                                <%--<asp:ListItem>Select Staff Name</asp:ListItem>--%>
                             </asp:DropDownList>
                         </div>
                     </div>
@@ -122,7 +119,7 @@
                     </div>
 
                     <div class="mb-4 row">
-                        <asp:Label ID="Label_Blood" runat="server" Text="Blood Pressure : " class="col-sm-4 col-form-label"></asp:Label>
+                        <asp:Label ID="Label_BloodPressure" runat="server" Text="Blood Pressure : " class="col-sm-4 col-form-label"></asp:Label>
                         <div class="col">
                             <asp:TextBox ID="TextBox_Blood" runat="server" type="text" class="form-control" CssClass="smallBox"></asp:TextBox>
                             <asp:Label ID="Label_B" runat="server" Text=" / " class="col-form-label" CssClass="smallLabel"></asp:Label>
@@ -205,7 +202,8 @@
                                 <div class="mb-4 row">
                                     <asp:Label ID="Label_Frequency" runat="server" Text="Medicine Frequency : " class="col-sm-4 col-form-label"></asp:Label>
                                     <div class="col">
-                                        <asp:DropDownList ID="DropDownList_Frequency" runat="server" placeholder="Select Medicine Frequency" class="form-control">
+                                        <asp:DropDownList ID="DropDownList_Frequency" runat="server" placeholder="Select Medicine Frequency" class="form-select">
+                                            <asp:ListItem>Select Medicine Frequency</asp:ListItem>
                                             <asp:ListItem>Once a day</asp:ListItem>
                                             <asp:ListItem>Twice a day</asp:ListItem>
                                             <asp:ListItem>Trice a day</asp:ListItem>
@@ -223,50 +221,44 @@
                                 </div>
 
                                 <div class="mb-3 text-center">
-                                    <asp:Button ID="Button_MedicineAdd" runat="server" Text="Add" class="btn btn-primary mx-2" />
-                                    <asp:Button ID="Button_MedicineClear" runat="server" Text="Clear" class="btn btn-primary mx-2" />
+                                    <asp:Button ID="Button_MedicineAdd" runat="server" Text="Add" class="btn btn-primary mx-2" OnClick="Button_MedicineAdd_Click" />
+                                    <asp:Button ID="Button_MedicineClear" runat="server" Text="Clear" class="btn btn-primary mx-2" OnClick="Button_MedicineClear_Click" />
                                 </div>
 
                             </div>
 
                             <div class="col p-4">
 
-                                <asp:GridView ID="GridViewMedication" runat="server" AutoGenerateColumns="False" AutoGenerateDeleteButton="True" AutoGenerateEditButton="True" CellPadding="4" ForeColor="#333333" GridLines="None" ShowFooter="True" Width="100%" ShowHeaderWhenEmpty="true">
+                                <asp:GridView ID="GridViewMedication" runat="server" AutoGenerateColumns="False" AutoGenerateDeleteButton="True" AutoGenerateEditButton="True" CellPadding="4" ForeColor="#333333" GridLines="None" Width="100%" ShowHeaderWhenEmpty="True" EmptyDataText="No Data Available Currently" EmptyDataRowStyle-Font-Italic="true" OnRowCancelingEdit="GridViewMedication_RowCancelingEdit" OnRowDeleting="GridViewMedication_RowDeleting" OnRowEditing="GridViewMedication_RowEditing" OnRowUpdating="GridViewMedication_RowUpdating">
                                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                     <Columns>
-                                        <asp:TemplateField HeaderText="Medicine">
-                                            <EditItemTemplate>
-                                                <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-                                            </EditItemTemplate>
-                                            <FooterTemplate>
-                                                <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
-                                            </FooterTemplate>
+                                        <asp:TemplateField HeaderText="Medication ID" Visible="false">
                                             <ItemTemplate>
-                                                <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+                                                <asp:Label ID="Label_MedicationIDItem" runat="server" Text='<%# Bind("medicationID") %>'></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="Medicine Name">
+                                            <EditItemTemplate>
+                                                <asp:TextBox ID="TextBox_MedicationEdit" runat="server" Text='<%# Bind("name") %>'></asp:TextBox>
+                                            </EditItemTemplate>
+                                            <ItemTemplate>
+                                                <asp:Label ID="Label_MedicationItem" runat="server" Text='<%# Bind("name") %>'></asp:Label>
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Frequency">
                                             <EditItemTemplate>
-                                                <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                                                <asp:TextBox ID="TextBox_FrequencyEdit" runat="server" Text='<%# Bind("frequency") %>'></asp:TextBox>
                                             </EditItemTemplate>
-                                            <FooterTemplate>
-                                                <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
-                                                <asp:Button ID="Button1" runat="server" Text="Button" />
-                                            </FooterTemplate>
                                             <ItemTemplate>
-                                                <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
+                                                <asp:Label ID="Label_FrequencyItem" runat="server" Text='<%# Bind("frequency") %>'></asp:Label>
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="No. of Days">
                                             <EditItemTemplate>
-                                                <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                                                <asp:TextBox ID="TextBox_NoOfDaysEdit" runat="server" Text='<%# Bind("noOfDays") %>'></asp:TextBox>
                                             </EditItemTemplate>
-                                            <FooterTemplate>
-                                                <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
-                                                <asp:Button ID="Button1" runat="server" Text="Button" />
-                                            </FooterTemplate>
                                             <ItemTemplate>
-                                                <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
+                                                <asp:Label ID="Label_NoOfDaysItem" runat="server" Text='<%# Bind("noOfDays") %>'></asp:Label>
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                     </Columns>
@@ -317,8 +309,8 @@
                                 </div>
 
                                 <div class="mb-3 text-center">
-                                    <asp:Button ID="Button_InvestigationAdd" runat="server" Text="Add" class="btn btn-primary mx-2" />
-                                    <asp:Button ID="Button_InvestigationClear" runat="server" Text="Clear" class="btn btn-primary mx-2" />
+                                    <asp:Button ID="Button_InvestigationAdd" runat="server" Text="Add" class="btn btn-primary mx-2" OnClick="Button_InvestigationAdd_Click" />
+                                    <asp:Button ID="Button_InvestigationClear" runat="server" Text="Clear" class="btn btn-primary mx-2" OnClick="Button_InvestigationClear_Click"/>
                                 </div>
 
 
@@ -326,42 +318,28 @@
 
                             <div class="col p-4">
 
-                                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" AutoGenerateDeleteButton="True" AutoGenerateEditButton="True" CellPadding="4" ForeColor="#333333" GridLines="None" ShowFooter="True" Width="100%" ShowHeaderWhenEmpty="true">
+                                <asp:GridView ID="GridViewInvestigation" runat="server" AutoGenerateColumns="False" AutoGenerateDeleteButton="True" AutoGenerateEditButton="True" CellPadding="4" ForeColor="#333333" GridLines="None" Width="100%" ShowHeaderWhenEmpty="True" EmptyDataText="No Data Available Currently" EmptyDataRowStyle-Font-Italic="true" OnRowCancelingEdit="GridViewInvestigation_RowCancelingEdit" OnRowDeleting="GridViewInvestigation_RowDeleting" OnRowEditing="GridViewInvestigation_RowEditing" OnRowUpdating="GridViewInvestigation_RowUpdating">
                                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                     <Columns>
-                                        <asp:TemplateField HeaderText="Medicine">
-                                            <EditItemTemplate>
-                                                <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-                                            </EditItemTemplate>
-                                            <FooterTemplate>
-                                                <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
-                                            </FooterTemplate>
+                                        <asp:TemplateField HeaderText="Investigation ID" Visible="false">
                                             <ItemTemplate>
-                                                <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+                                                <asp:Label ID="Label_InvestigationIDItem" runat="server" Text='<%# Bind("investigationID") %>'></asp:Label>
                                             </ItemTemplate>
                                         </asp:TemplateField>
-                                        <asp:TemplateField HeaderText="Frequency">
+                                        <asp:TemplateField HeaderText="Investigation">
                                             <EditItemTemplate>
-                                                <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                                                <asp:TextBox ID="TextBox_InvestigationEdit" runat="server" Text='<%# Bind("investigation") %>'></asp:TextBox>
                                             </EditItemTemplate>
-                                            <FooterTemplate>
-                                                <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
-                                                <asp:Button ID="Button1" runat="server" Text="Button" />
-                                            </FooterTemplate>
                                             <ItemTemplate>
-                                                <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
+                                                <asp:Label ID="Label_InvestigationItem" runat="server" Text='<%# Bind("investigation") %>'></asp:Label>
                                             </ItemTemplate>
                                         </asp:TemplateField>
-                                        <asp:TemplateField HeaderText="No. of Days">
+                                        <asp:TemplateField HeaderText="Result">
                                             <EditItemTemplate>
-                                                <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                                                <asp:TextBox ID="TextBox_ResultEdit" runat="server" Text='<%# Bind("result") %>'></asp:TextBox>
                                             </EditItemTemplate>
-                                            <FooterTemplate>
-                                                <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
-                                                <asp:Button ID="Button1" runat="server" Text="Button" />
-                                            </FooterTemplate>
                                             <ItemTemplate>
-                                                <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
+                                                <asp:Label ID="Label_ResultItem" runat="server" Text='<%# Bind("result") %>'></asp:Label>
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                     </Columns>
@@ -392,7 +370,8 @@
 
         <div class="mb-3 text-center">
             <asp:Button ID="Button_Save" runat="server" Text="Save" class="btn btn-primary mx-2" />
-            <asp:Button ID="Button_Clear" runat="server" Text="Clear" class="btn btn-primary mx-2" />
+            <asp:Button ID="Button_Clear" runat="server" Text="Clear" class="btn btn-primary mx-2"
+                OnClientClick="this.form.reset(); return false;" />
         </div>
 
     </div>

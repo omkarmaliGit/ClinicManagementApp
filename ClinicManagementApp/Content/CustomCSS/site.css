@@ -8,7 +8,8 @@ body {
 }
 
 #navDiv {
-    background-color: #023047;
+    /*background-color: #023047;*/
+    background-color: #5D7B9D;
     font-weight: 700;
 }
 
@@ -19,7 +20,8 @@ body {
 }
 
 #footerPara {
-    background-color: #023047;
+    /*background-color: #023047;*/
+    background-color: #5D7B9D;
     color: white;
     margin-bottom: 0;
 }
@@ -41,8 +43,10 @@ body {
 }
 
 .btn {
-    background-color: #023047;
-    border: 1px solid #023047;
+    /*background-color: #023047;*/
+    /*border: 1px solid #023047;*/
+    background-color: #5D7B9D;
+    border: 1px solid #5D7B9D;
     font-weight: 700;
     min-width: 120px;
     min-height: 40px;
@@ -66,10 +70,15 @@ h5 {
     font-weight: 700;
 }
 
-.smallBox{
-    width:50px;
+.smallBox {
+    width: 60px;
 }
 
 .smallLabel {
-    font-weight:500;
+    font-weight: 500;
 }
+
+.red {
+    color: red;
+}
+

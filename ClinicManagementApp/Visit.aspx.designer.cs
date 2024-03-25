@@ -51,13 +51,13 @@ namespace ClinicManagementApp
         protected global::System.Web.UI.WebControls.Label Label_PatientName;
 
         /// <summary>
-        /// Label_PatientNameShow control.
+        /// TextBox_PatientName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_PatientNameShow;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_PatientName;
 
         /// <summary>
         /// Label_Age control.
@@ -213,13 +213,13 @@ namespace ClinicManagementApp
         protected global::System.Web.UI.WebControls.Label Label_T;
 
         /// <summary>
-        /// Label_Blood control.
+        /// Label_BloodPressure control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_Blood;
+        protected global::System.Web.UI.WebControls.Label Label_BloodPressure;
 
         /// <summary>
         /// TextBox_Blood control.
@@ -537,13 +537,13 @@ namespace ClinicManagementApp
         protected global::System.Web.UI.WebControls.Button Button_InvestigationClear;
 
         /// <summary>
-        /// GridView1 control.
+        /// GridViewInvestigation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.GridView GridViewInvestigation;
 
         /// <summary>
         /// Button_Save control.

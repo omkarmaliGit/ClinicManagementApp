@@ -186,13 +186,13 @@ namespace ClinicManagementApp
         protected global::System.Web.UI.WebControls.Label Label_Gender;
 
         /// <summary>
-        /// DropDownList_Gender control.
+        /// RadioButtonList_Gender control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList_Gender;
+        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList_Gender;
 
         /// <summary>
         /// RequiredFieldValidator_Gender control.
@@ -220,6 +220,15 @@ namespace ClinicManagementApp
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox_DOB;
+
+        /// <summary>
+        /// RequiredFieldValidator_DOB control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_DOB;
 
         /// <summary>
         /// Label_Contact control.
@@ -328,6 +337,15 @@ namespace ClinicManagementApp
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList_BloodGroup;
+
+        /// <summary>
+        /// RequiredFieldValidator_BloodGroup control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_BloodGroup;
 
         /// <summary>
         /// Label_Registration control.
@@ -474,48 +492,48 @@ namespace ClinicManagementApp
         protected global::System.Web.UI.WebControls.Button Button_ChronicAdd;
 
         /// <summary>
-        /// TabPanelMedication control.
+        /// TabPanelMedicineHistory control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.TabPanel TabPanelMedication;
+        protected global::AjaxControlToolkit.TabPanel TabPanelMedicineHistory;
 
         /// <summary>
-        /// GridViewMedication control.
+        /// GridViewMedicine control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridViewMedication;
+        protected global::System.Web.UI.WebControls.GridView GridViewMedicine;
 
         /// <summary>
-        /// TextBox_Medication control.
+        /// TextBox_MedicineAdd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_Medication;
+        protected global::System.Web.UI.WebControls.TextBox TextBox_MedicineAdd;
 
         /// <summary>
-        /// DropDownList_Frequency control.
+        /// DropDownList_FrequencyAdd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList_Frequency;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_FrequencyAdd;
 
         /// <summary>
-        /// Button_Medicine control.
+        /// Button_MedicineAdd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_Medicine;
+        protected global::System.Web.UI.WebControls.Button Button_MedicineAdd;
     }
 }

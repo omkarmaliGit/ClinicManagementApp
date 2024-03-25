@@ -13,13 +13,14 @@ namespace ClinicManagementApp
     public partial class Patient : System.Web.UI.Page
     {
         DataBase db = new DataBase();
+        int patientID;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                TabContainerPatientMoreDetails.Visible = false;
                 showTable();
+                TabContainerPatientMoreDetails.Visible = false;
             }
         }
 
@@ -45,26 +46,38 @@ namespace ClinicManagementApp
         {
             try
             {
-                if (TextBox_Name.Text != "" && TextBox_City.Text != "" && DropDownList_Gender.Text != "" && TextBox_Contact.Text != "" && TextBox_Email.Text != "" && DropDownList_BloodGroup.Text != "" && TextBox_Registration.Text != "")
+                if (TextBox_Name.Text != "" && TextBox_City.Text != "" && RadioButtonList_Gender.SelectedValue != "" && TextBox_DOB.Text != "" && TextBox_Contact.Text != "" && TextBox_Email.Text != "" && DropDownList_BloodGroup.SelectedValue != "Select Blood Group" && TextBox_Registration.Text != "")
                 {
-
                     if (GridView_Patient.SelectedRow == null)
                     {
-                        db.setData($"insert into patient(name, address, area, city, pincode, gender, birthDate, contact, email, referenceFrom, bloodGroup, registrationDate) values ('{TextBox_Name.Text}', '{TextBox_Address.Text}', '{TextBox_Area.Text}', '{TextBox_City.Text}', '{TextBox_Pincode.Text}', '{DropDownList_Gender.Text}', '{TextBox_DOB.Text}', '{TextBox_Contact.Text}', '{TextBox_Email.Text}', '{TextBox_Reference.Text}', '{DropDownList_BloodGroup.Text}', '{TextBox_Registration.Text}')");
+                        db.setData($"insert into patient(name, address, area, city, pincode, gender, birthDate, contact, email, referenceFrom, bloodGroup, registrationDate) values ('{TextBox_Name.Text}', '{TextBox_Address.Text}', '{TextBox_Area.Text}', '{TextBox_City.Text}', '{TextBox_Pincode.Text}', '{RadioButtonList_Gender.SelectedValue}','{TextBox_DOB.Text}', '{TextBox_Contact.Text}', '{TextBox_Email.Text}', '{TextBox_Reference.Text}', '{DropDownList_BloodGroup.SelectedValue}', '{TextBox_Registration.Text}')");
                         Response.Write("Record Inserted Successfully");
+
+                        patientID = Convert.ToInt32(db.getSingleData($"select max(patientID) from patient"));
                     }
                     else
                     {
                         GridViewRow row = GridView_Patient.SelectedRow;
                         Label l1 = (Label)row.FindControl("Label_PatientID");
-                        int patientID = Convert.ToInt32(l1.Text);
+                        patientID = Convert.ToInt32(l1.Text);
 
-                        db.setData($"update staff set name = '{TextBox_Name.Text}', address = '{TextBox_Address.Text}', area = '{TextBox_Area.Text}', city = '{TextBox_City.Text}', pincode = '{TextBox_Pincode.Text}', gender = '{DropDownList_Gender.Text}', birthDate = '{TextBox_DOB.Text}', contact = '{TextBox_Contact.Text}', email = '{TextBox_Email.Text}', referenceFrom = '{TextBox_Reference.Text}', bloodGroup = '{DropDownList_BloodGroup.Text}'  where patientID='{patientID}'");
+                        db.setData($"update patient set name = '{TextBox_Name.Text}', address = '{TextBox_Address.Text}', area = '{TextBox_Area.Text}', city = '{TextBox_City.Text}', pincode = '{TextBox_Pincode.Text}', gender = '{RadioButtonList_Gender.SelectedValue}', birthDate = '{TextBox_DOB.Text}', contact = '{TextBox_Contact.Text}', email = '{TextBox_Email.Text}', referenceFrom = '{TextBox_Reference.Text}', bloodGroup = '{DropDownList_BloodGroup.SelectedValue}', registrationDate = '{TextBox_Registration.Text}' where patientID='{patientID}'");
                         Response.Write("Record Updated Successfully");
-                        GridView_Patient.EditIndex = -1;
+                        GridView_Patient.SelectedIndex = -1;
                     }
 
+                    //TextBox_Name.Text = String.Empty;
+
+                    db.CloseConnection();
+                    showTable();
+
                     //TabContainerPatient.ActiveTabIndex = 0;
+
+                    TabContainerPatientMoreDetails.Visible = true;
+
+                    showAllergyTable();
+                    showChronicTable();
+                    showMedicineTable();
 
                 }
             }
@@ -74,14 +87,8 @@ namespace ClinicManagementApp
             }
             finally
             {
-                GridView_Patient.SelectedIndex = -1;
+                db.CloseConnection();
             }
-
-            TabContainerPatientMoreDetails.Visible = true;
-
-            showAllergyTable();
-            showChronicTable();
-            showMedicineTable();
 
         }
 
@@ -92,25 +99,30 @@ namespace ClinicManagementApp
             TextBox_Area.Text = String.Empty;
             TextBox_City.Text = String.Empty;
             TextBox_Pincode.Text = String.Empty;
-            DropDownList_Gender.Text = String.Empty;
+            RadioButtonList_Gender.SelectedIndex = -1;
             TextBox_DOB.Text = String.Empty;
             TextBox_Contact.Text = String.Empty;
             TextBox_Email.Text = String.Empty;
             TextBox_Reference.Text = String.Empty;
-            DropDownList_BloodGroup.Text = String.Empty;
+            DropDownList_BloodGroup.SelectedIndex = 0;
             TextBox_Registration.Text = String.Empty;
-            TextBox_Name.Focus();
+            //TextBox_Name.Focus();
+
+            //patientID = 0;
+
+            TabContainerPatientMoreDetails.Visible = false;
         }
 
-        protected void GridView_Staff_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        protected void GridView_Patient_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             GridViewRow row = GridView_Patient.Rows[e.RowIndex];
             Label l1 = (Label)row.FindControl("Label_PatientID");
 
             try
             {
-                db.setData($"delete from patient where patientID={l1.Text}");
+                db.setData($"delete from patient where patientID = {l1.Text}");
                 Response.Write("Deleted");
+                showTable();
             }
             catch (Exception ex)
             {
@@ -118,19 +130,18 @@ namespace ClinicManagementApp
             }
             finally
             {
-                showTable();
                 db.CloseConnection();
             }
         }
 
-        protected void GridView_Staff_SelectedIndexChanged(object sender, EventArgs e)
+        protected void GridView_Patient_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
                 GridViewRow row = GridView_Patient.SelectedRow;
                 Label l1 = (Label)row.FindControl("Label_PatientID");
 
-                SqlDataReader reader = db.getData($"select * from patient where ID='{l1.Text}'");
+                SqlDataReader reader = db.getData($"select * from patient where patientID = '{l1.Text}'");
 
                 if (reader.Read())
                 {
@@ -139,17 +150,13 @@ namespace ClinicManagementApp
                     TextBox_Area.Text = reader[3].ToString();
                     TextBox_City.Text = reader[4].ToString();
                     TextBox_Pincode.Text = reader[5].ToString();
-                    DropDownList_Gender.Text = reader[6].ToString();
-                    TextBox_DOB.Text = reader[7].ToString();
+                    RadioButtonList_Gender.SelectedValue = reader[6].ToString();
+                    TextBox_DOB.Text = reader.GetDateTime(7).ToString("yyyy-MM-dd");
                     TextBox_Contact.Text = reader[8].ToString();
                     TextBox_Email.Text = reader[9].ToString();
                     TextBox_Reference.Text = reader[10].ToString();
                     DropDownList_BloodGroup.Text = reader[11].ToString();
-                    TextBox_Registration.Text = reader[12].ToString();
-                }
-                else
-                {
-                    Response.Write("Not found");
+                    TextBox_Registration.Text = reader.GetDateTime(12).ToString("yyyy-MM-dd");
                 }
 
                 TabContainerPatient.ActiveTabIndex = 1;
@@ -165,12 +172,31 @@ namespace ClinicManagementApp
         }
 
 
+
+
+
+        /***************************************************************************************************************/
+
+
         // Allergy
         protected void showAllergyTable()
         {
             try
             {
-                DataTable adt = db.getTable($"select patientID, name, city, gender, contact, registrationDate from patient");
+                if (GridView_Patient.SelectedRow == null)
+                {
+                    patientID = Convert.ToInt32(db.getSingleData($"select max(patientID) from patient"));
+                    db.CloseConnection();
+                }
+                else
+                {
+                    GridViewRow row = GridView_Patient.SelectedRow;
+                    Label l1 = (Label)row.FindControl("Label_PatientID");
+                    patientID = Convert.ToInt32(l1.Text);
+                }
+
+                //Response.Write(patientID);
+                DataTable adt = db.getTable($"select allergyID, name, startDate from allergy where patientID = {patientID}");
                 GridViewAllergy.DataSource = adt;
                 GridViewAllergy.DataBind();
             }
@@ -188,14 +214,30 @@ namespace ClinicManagementApp
         {
             try
             {
-                
-
-                if (GridViewAllergy.SelectedRow == null)
+                if (GridView_Patient.SelectedRow == null)
                 {
-                    db.setData($"insert into allergy(name, startDate, patientID) values ('{TextBox_AllergyAdd.Text}', '{TextBox_AllergyStartDateAdd.Text}', '')");
-                    //Response.Write("Record Inserted Successfully");
+                    patientID = Convert.ToInt32(db.getSingleData($"select max(patientID) from patient"));
+                    db.CloseConnection();
+                }
+                else
+                {
+                    GridViewRow row = GridView_Patient.SelectedRow;
+                    Label l1 = (Label)row.FindControl("Label_PatientID");
+                    patientID = Convert.ToInt32(l1.Text);
                 }
 
+                if (TextBox_AllergyAdd.Text != "" && TextBox_AllergyStartDateAdd.Text != "")
+                {
+                    if (GridViewAllergy.SelectedRow == null)
+                    {
+                        db.setData($"insert into allergy(name, startDate, patientID) values ('{TextBox_AllergyAdd.Text}', '{TextBox_AllergyStartDateAdd.Text}', '{patientID}')");
+                        Response.Write("Record Inserted Successfully");
+                    }
+
+                    TextBox_AllergyAdd.Text = "";
+                    TextBox_AllergyStartDateAdd.Text = "";
+                    showAllergyTable();
+                }
             }
             catch (Exception ex)
             {
@@ -203,20 +245,20 @@ namespace ClinicManagementApp
             }
             finally
             {
-                //GridViewAllergy.SelectedIndex = -1;
+                db.CloseConnection();
             }
-
         }
 
         protected void GridViewAllergy_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             GridViewRow row = GridViewAllergy.Rows[e.RowIndex];
-            Label l1 = (Label)row.FindControl("Label_AllergyID");
+            Label l1 = (Label)row.FindControl("Label_AllergyIDItem");
 
             try
             {
                 db.setData($"delete from allergy where allergyID={l1.Text}");
                 Response.Write("Deleted");
+                showAllergyTable();
             }
             catch (Exception ex)
             {
@@ -224,10 +266,48 @@ namespace ClinicManagementApp
             }
             finally
             {
-                showTable();
                 db.CloseConnection();
             }
         }
+
+        protected void GridViewAllergy_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            GridViewAllergy.EditIndex = e.NewEditIndex;
+            showAllergyTable();
+        }
+
+        protected void GridViewAllergy_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            GridViewRow row = GridViewAllergy.Rows[e.RowIndex];
+            Label l1 = (Label)row.FindControl("Label_AllergyIDItem");
+            TextBox t1 = (TextBox)row.FindControl("TextBox_AllergyEdit");
+            TextBox t2 = (TextBox)row.FindControl("TextBox_AllergyStartDateEdit");
+
+            try
+            {
+                db.setData($"update allergy set name = '{t1.Text}', startDate = '{t2.Text}' where allergyID={l1.Text}");
+                Response.Write("Allergy Record Updated Successfully ");
+                GridViewAllergy.EditIndex = -1;
+                showAllergyTable();
+            }
+            catch (Exception ex)
+            {
+                Response.Write(ex.Message);
+            }
+            finally
+            {
+                db.CloseConnection();
+            }
+        }
+
+        protected void GridViewAllergy_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            GridViewAllergy.EditIndex = -1;
+            showAllergyTable();
+        }
+
+
+
 
 
         //Chronic
@@ -235,7 +315,20 @@ namespace ClinicManagementApp
         {
             try
             {
-                DataTable cdt = db.getTable($"select patientID, name, city, gender, contact, registrationDate from patient");
+                if (GridView_Patient.SelectedRow == null)
+                {
+                    patientID = Convert.ToInt32(db.getSingleData($"select max(patientID) from patient"));
+                    db.CloseConnection();
+                }
+                else
+                {
+                    GridViewRow row = GridView_Patient.SelectedRow;
+                    Label l1 = (Label)row.FindControl("Label_PatientID");
+                    patientID = Convert.ToInt32(l1.Text);
+                }
+
+                //Response.Write(patientID);
+                DataTable cdt = db.getTable($"select chronicID, name, startDate from chronic where patientID = {patientID}");
                 GridViewChronic.DataSource = cdt;
                 GridViewChronic.DataBind();
             }
@@ -249,14 +342,34 @@ namespace ClinicManagementApp
             }
         }
 
-        // MEdicine
-        protected void showMedicineTable()
+        protected void Button_ChronicAdd_Click(object sender, EventArgs e)
         {
             try
             {
-                DataTable mdt = db.getTable($"select patientID, name, city, gender, contact, registrationDate from patient");
-                GridViewMedication.DataSource = mdt;
-                GridViewMedication.DataBind();
+                if (GridView_Patient.SelectedRow == null)
+                {
+                    patientID = Convert.ToInt32(db.getSingleData($"select max(patientID) from patient"));
+                    db.CloseConnection();
+                }
+                else
+                {
+                    GridViewRow row = GridView_Patient.SelectedRow;
+                    Label l1 = (Label)row.FindControl("Label_PatientID");
+                    patientID = Convert.ToInt32(l1.Text);
+                }
+
+                if (TextBox_ChronicAdd.Text != "" && TextBox_ChronicStartDateAdd.Text != "")
+                {
+                    if (GridViewChronic.SelectedRow == null)
+                    {
+                        db.setData($"insert into chronic(name, startDate, patientID) values ('{TextBox_ChronicAdd.Text}', '{TextBox_ChronicStartDateAdd.Text}', '{patientID}')");
+                        Response.Write("Record Inserted Successfully");
+                    }
+
+                    TextBox_ChronicAdd.Text = "";
+                    TextBox_ChronicStartDateAdd.Text = "";
+                    showChronicTable();
+                }
             }
             catch (Exception ex)
             {
@@ -267,6 +380,203 @@ namespace ClinicManagementApp
                 db.CloseConnection();
             }
         }
+
+        protected void GridViewChronic_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            GridViewRow row = GridViewChronic.Rows[e.RowIndex];
+            Label l1 = (Label)row.FindControl("Label_ChronicIDItem");
+
+            try
+            {
+                db.setData($"delete from chronic where chronicID={l1.Text}");
+                Response.Write("Deleted");
+                showChronicTable();
+            }
+            catch (Exception ex)
+            {
+                Response.Write(ex.Message);
+            }
+            finally
+            {
+                db.CloseConnection();
+            }
+        }
+
+        protected void GridViewChronic_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            GridViewChronic.EditIndex = e.NewEditIndex;
+            showChronicTable();
+        }
+
+        protected void GridViewChronic_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            GridViewRow row = GridViewChronic.Rows[e.RowIndex];
+            Label l1 = (Label)row.FindControl("Label_ChronicIDItem");
+            TextBox t1 = (TextBox)row.FindControl("TextBox_ChronicEdit");
+            TextBox t2 = (TextBox)row.FindControl("TextBox_ChronicStartDateEdit");
+
+            try
+            {
+                db.setData($"update chronic set name = '{t1.Text}', startDate = '{t2.Text}' where chronicID={l1.Text}");
+                Response.Write("Chronic Updated");
+                GridViewChronic.EditIndex = -1;
+                showChronicTable();
+            }
+            catch (Exception ex)
+            {
+                Response.Write(ex.Message);
+            }
+            finally
+            {
+                db.CloseConnection();
+            }
+        }
+
+        protected void GridViewChronic_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            GridViewChronic.EditIndex = -1;
+            showChronicTable();
+        }
+
+
+
+
+
+
+
+
+
+
+        // Medicine
+        protected void showMedicineTable()
+        {
+            try
+            {
+                if (GridView_Patient.SelectedRow == null)
+                {
+                    patientID = Convert.ToInt32(db.getSingleData($"select max(patientID) from patient"));
+                    db.CloseConnection();
+                }
+                else
+                {
+                    GridViewRow row = GridView_Patient.SelectedRow;
+                    Label l1 = (Label)row.FindControl("Label_PatientID");
+                    patientID = Convert.ToInt32(l1.Text);
+                }
+
+                Response.Write(patientID);
+                DataTable mdt = db.getTable($"select medicineID, name, frequency from medicineHistory where patientID = {patientID}");
+                GridViewMedicine.DataSource = mdt;
+                GridViewMedicine.DataBind();
+            }
+            catch (Exception ex)
+            {
+                Response.Write(ex.Message);
+            }
+            finally
+            {
+                db.CloseConnection();
+            }
+        }
+
+        protected void Button_MedicineAdd_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (GridView_Patient.SelectedRow == null)
+                {
+                    patientID = Convert.ToInt32(db.getSingleData($"select max(patientID) from patient"));
+                    db.CloseConnection();
+                }
+                else
+                {
+                    GridViewRow row = GridView_Patient.SelectedRow;
+                    Label l1 = (Label)row.FindControl("Label_PatientID");
+                    patientID = Convert.ToInt32(l1.Text);
+                }
+
+                if (TextBox_MedicineAdd.Text != "" && DropDownList_FrequencyAdd.SelectedValue != "Select Medication Frequency")
+                {
+                    if (GridViewMedicine.SelectedRow == null)
+                    {
+                        db.setData($"insert into medicineHistory(name, frequency, patientID) values ('{TextBox_MedicineAdd.Text}', '{DropDownList_FrequencyAdd.SelectedValue}', '{patientID}')");
+                        Response.Write("Record Inserted Successfully");
+                    }
+
+                    TextBox_MedicineAdd.Text = "";
+                    DropDownList_FrequencyAdd.SelectedIndex = 0;
+                    showMedicineTable();
+                }
+            }
+            catch (Exception ex)
+            {
+                Response.Write(ex.Message);
+            }
+            finally
+            {
+                db.CloseConnection();
+            }
+        }
+
+        protected void GridViewMedicine_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            GridViewRow row = GridViewMedicine.Rows[e.RowIndex];
+            Label l1 = (Label)row.FindControl("Label_MedicineIDItem");
+
+            try
+            {
+                db.setData($"delete from medicineHistory where medicineID={l1.Text}");
+                Response.Write("Deleted");
+                showMedicineTable();
+            }
+            catch (Exception ex)
+            {
+                Response.Write(ex.Message);
+            }
+            finally
+            {
+                db.CloseConnection();
+            }
+        }
+
+        protected void GridViewMedicine_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            GridViewMedicine.EditIndex = e.NewEditIndex;
+            showMedicineTable();
+        }
+
+        protected void GridViewMedicine_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            GridViewRow row = GridViewMedicine.Rows[e.RowIndex];
+            Label l1 = (Label)row.FindControl("Label_MedicineIDItem");
+            TextBox t1 = (TextBox)row.FindControl("TextBox_MedicineEdit");
+            TextBox t2 = (TextBox)row.FindControl("TextBox_FrequencyEdit");
+
+            try
+            {
+                db.setData($"update medicineHistory set name = '{t1.Text}', frequency = '{t2.Text}' where medicineID={l1.Text}");
+                Response.Write("Medicine Record Updated Successfully ");
+                GridViewMedicine.EditIndex = -1;
+                showMedicineTable();
+            }
+            catch (Exception ex)
+            {
+                Response.Write(ex.Message);
+            }
+            finally
+            {
+                db.CloseConnection();
+            }
+        }
+
+        protected void GridViewMedicine_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            GridViewMedicine.EditIndex = -1;
+            showMedicineTable();
+        }
+
+
+
 
 
 

@@ -11,10 +11,7 @@ namespace ClinicManagementApp
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (Session["adminID"] == null)
-            //{
-            //    Response.Redirect("Login.aspx");
-            //}
+            //Response.Write($"<script>alert('updated');</script>");
         }
     }
 }
