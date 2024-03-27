@@ -33,6 +33,15 @@ namespace ClinicManagementApp
         protected global::System.Web.UI.WebControls.Label Label_Registration;
 
         /// <summary>
+        /// TextBox_Registration control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Registration;
+
+        /// <summary>
         /// DropDownList_Registration control.
         /// </summary>
         /// <remarks>
@@ -231,13 +240,13 @@ namespace ClinicManagementApp
         protected global::System.Web.UI.WebControls.TextBox TextBox_Blood;
 
         /// <summary>
-        /// Label_B control.
+        /// Label_Blood control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_B;
+        protected global::System.Web.UI.WebControls.Label Label_Blood;
 
         /// <summary>
         /// TextBox_Pressure control.
@@ -249,13 +258,13 @@ namespace ClinicManagementApp
         protected global::System.Web.UI.WebControls.TextBox TextBox_Pressure;
 
         /// <summary>
-        /// Label_P control.
+        /// Label_Pressure control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_P;
+        protected global::System.Web.UI.WebControls.Label Label_Pressure;
 
         /// <summary>
         /// Label_Oxygen control.

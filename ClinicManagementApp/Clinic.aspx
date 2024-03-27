@@ -105,10 +105,11 @@
             <div class="mb-3 text-center">
                 <asp:Button ID="Button_Save" runat="server" Text="Save" class="btn btn-primary mx-2" OnClick="Button_Save_Click" />
                 <asp:Button ID="Button_Clear" runat="server" Text="Clear" class="btn btn-primary mx-2"
-                    OnClientClick="this.form.reset(); return false;"/>
+                    OnClientClick="this.form.reset(); return false;" />
             </div>
 
         </div>
     </div>
+
 
 </asp:Content>

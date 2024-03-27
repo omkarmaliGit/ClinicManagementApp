@@ -15,6 +15,7 @@ namespace ClinicManagementApp
     public partial class Visit : System.Web.UI.Page
     {
         DataBase db = new DataBase();
+        int visitID;
 
         private DataTable virtualMedicationDataTable
         {
@@ -51,7 +52,7 @@ namespace ClinicManagementApp
                     newDt.Columns.Add("investigationID", typeof(int)).AutoIncrement = true;
                     newDt.Columns.Add("investigation", typeof(string));
                     newDt.Columns.Add("result", typeof(string));
-                    
+
                     newDt.PrimaryKey = new DataColumn[] { newDt.Columns["investigationID"] };
 
                     ViewState["InvestigationDataTable"] = newDt;
@@ -144,6 +145,144 @@ namespace ClinicManagementApp
         }
 
 
+        protected void TextBox_Registration_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (TextBox_Registration.Text == "")
+                {
+                    TextBox_PatientName.Text = string.Empty;
+                    Label_AgeShow.Text = string.Empty;
+                    Label_BloodGroupShow.Text = string.Empty;
+                }
+                else
+                {
+                    int registeredID = Convert.ToInt32(TextBox_Registration.Text);
+
+                    SqlDataReader reader = db.getData($"select name, birthDate, bloodGroup from patient where patientID = {registeredID}");
+
+                    if (reader.Read())
+                    {
+                        TextBox_PatientName.Text = reader[0].ToString();
+
+
+                        DateTime birthdate = DateTime.Parse(reader.GetDateTime(1).ToString("yyyy-MM-dd"));
+                        DateTime today = DateTime.Today;
+                        int age = today.Year - birthdate.Year;
+
+                        if (today.Month < birthdate.Month || (today.Month == birthdate.Month && today.Day < birthdate.Day))
+                        {
+                            age--;
+                        }
+
+                        Label_AgeShow.Text = $"{age} years old";
+
+                        Label_BloodGroupShow.Text = reader[2].ToString();
+                    }
+                    else
+                    {
+                        Response.Write("Not Registered");
+                        TextBox_PatientName.Text = string.Empty;
+                        Label_AgeShow.Text = string.Empty;
+                        Label_BloodGroupShow.Text = string.Empty;
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Response.Write(ex.Message);
+            }
+            finally
+            {
+                db.CloseConnection();
+            }
+        }
+
+
+        protected void TextBox_PatientName_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (TextBox_PatientName.Text == "")
+                {
+                    TextBox_Registration.Text = string.Empty;
+                    DropDownList_Registration.SelectedIndex = 0;
+                    Label_AgeShow.Text = string.Empty;
+                    Label_BloodGroupShow.Text = string.Empty;
+
+                    DropDownList_Registration.Visible = false;
+                    TextBox_Registration.Visible = true;
+                }
+                else
+                {
+                    SqlDataReader reader = db.getData($"select patientID, birthDate, bloodGroup, name from patient where name like '{TextBox_PatientName.Text}%'");
+
+                    int count = 0;
+                    string tempName = "";
+
+                    DropDownList_Registration.Items.Clear();
+                    DropDownList_Registration.Items.Add(new ListItem("Select Registration Number"));
+
+                    while (reader.Read())
+                    {
+                        TextBox_Registration.Text = reader[0].ToString();
+                        DropDownList_Registration.Items.Add(reader[0].ToString());
+
+                        DateTime birthdate = DateTime.Parse(reader.GetDateTime(1).ToString("yyyy-MM-dd"));
+                        DateTime today = DateTime.Today;
+                        int age = today.Year - birthdate.Year;
+
+                        if (today.Month < birthdate.Month || (today.Month == birthdate.Month && today.Day < birthdate.Day))
+                        {
+                            age--;
+                        }
+
+                        Label_AgeShow.Text = $"{age} years old";
+
+                        Label_BloodGroupShow.Text = reader[2].ToString();
+                        tempName = reader[3].ToString();
+
+                        count++;
+                    }
+
+                    if (count > 1)
+                    {
+                        TextBox_Registration.Visible = false;
+                        DropDownList_Registration.Visible = true;
+                        Label_AgeShow.Text = "";
+                        Label_BloodGroupShow.Text = "";
+                    }
+                    else
+                    {
+                        DropDownList_Registration.Visible = false;
+                        TextBox_Registration.Visible = true;
+                        TextBox_PatientName.Text = tempName;
+                    }
+
+                    if (count<1)
+                    {
+                        Response.Write("No Record");
+                        DropDownList_Registration.Visible = false;
+                        TextBox_Registration.Visible = true;
+                        TextBox_Registration.Text = "";
+                        TextBox_PatientName.Text = "";
+                        Label_AgeShow.Text = "";
+                        Label_BloodGroupShow.Text = "";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Response.Write(ex.Message);
+            }
+            finally
+            {
+                db.CloseConnection();
+            }
+        }
+
+
         protected void DropDownList_Registration_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -182,35 +321,6 @@ namespace ClinicManagementApp
                 db.CloseConnection();
             }
         }
-
-
-        protected void TextBox_PatientName_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                SqlDataReader reader = db.getData($"select patientID from patient where name like '{TextBox_PatientName.Text}%'");
-
-                DropDownList_Registration.Items.Clear();
-
-                DropDownList_Registration.Items.Add(new ListItem("Select Registration Number"));
-
-                while (reader.Read())
-                {
-                    DropDownList_Registration.Items.Add(reader[0].ToString());
-                }
-
-            }
-            catch (Exception ex)
-            {
-                Response.Write(ex.Message);
-            }
-            finally
-            {
-                db.CloseConnection();
-            }
-        }
-
-
 
 
         /* Medication */
@@ -305,7 +415,7 @@ namespace ClinicManagementApp
             try
             {
                 DataRow newRow = virtualInvestigationDataTable.NewRow();
-                newRow["name"] = TextBox_Investigation.Text;
+                newRow["investigation"] = TextBox_Investigation.Text;
                 newRow["result"] = TextBox_Result.Text;
 
                 virtualInvestigationDataTable.Rows.Add(newRow);
@@ -349,7 +459,7 @@ namespace ClinicManagementApp
             TextBox t1 = (TextBox)row.FindControl("TextBox_InvestigationEdit");
             TextBox t2 = (TextBox)row.FindControl("TextBox_ResultEdit");
 
-            DataRow dr = virtualMedicationDataTable.Rows.Find(investigationID);
+            DataRow dr = virtualInvestigationDataTable.Rows.Find(investigationID);
             if (dr != null)
             {
                 dr["investigation"] = t1.Text;
@@ -369,5 +479,126 @@ namespace ClinicManagementApp
             showVirtualInvestigationData();
         }
 
+
+
+        /**<-- Remaining Visit Code -->**/
+        protected void Button_Save_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (DropDownList_Registration.SelectedIndex != 0 && TextBox_PatientName.Text != "" && DropDownList_VisitType.SelectedIndex != 0 && DropDownList_Doctor.SelectedIndex != 0 && DropDownList_Staff.SelectedIndex != 0)
+                {
+                    //string bp = $"{TextBox_Blood.Text}/{TextBox_Pressure.Text}";
+
+                    db.setData($"insert into visit (patientID, visitDate, visitTime, visitType, doctorID, staffID, temperature, bloodPressure, oxygen, height, weight, symptoms, diagnosis) values ('{DropDownList_Registration.SelectedValue}', '{TextBox_VisitDate.Text}', '{TextBox_VisitTime.Text}', '{DropDownList_VisitType.SelectedValue}', '{DropDownList_Doctor.SelectedValue}', '{DropDownList_Staff.SelectedValue}','{TextBox_Temperature.Text}', '{TextBox_Blood.Text}/{TextBox_Pressure.Text}', '{TextBox_Oxygen.Text}', '{TextBox_Height.Text}', '{TextBox_Weight.Text}', '{TextBox_Symptoms.Text}','{TextBox_Diagnosis.Text}')");
+                    Response.Write("Record Inserted Successfully");
+
+                    visitID = Convert.ToInt32(db.getSingleData($"select max(visitID) from visit"));
+                    db.CloseConnection();
+
+                    //medi
+
+                    if (virtualMedicationDataTable.Rows.Count > 0)
+                    {
+                        foreach (DataRow row in virtualMedicationDataTable.Rows)
+                        {
+                            db.setData($"insert into medication (name, frequency, noOfDays, visitID) values ('{row["name"]}','{row["frequency"]}','{row["noOfDays"]}','{visitID}')");
+
+                        }
+
+                        Response.Write("Medication data saved successfully!");
+                    }
+                    else
+                    {
+                        Response.Write("No medication data to save!");
+                    }
+
+                    //invest
+
+                    if (virtualInvestigationDataTable.Rows.Count > 0)
+                    {
+                        foreach (DataRow row in virtualInvestigationDataTable.Rows)
+                        {
+                            db.setData($"insert into investigation (investigationDetail, result, visitID) values ('{row["investigation"]}','{row["result"]}','{visitID}')");
+
+                        }
+
+                        Response.Write("Investigation data saved successfully!");
+                    }
+                    else
+                    {
+                        Response.Write("No investigation data to save!");
+                    }
+
+                    //finally
+
+                    DropDownList_Registration.SelectedIndex = 0;
+                    TextBox_PatientName.Text = string.Empty;
+                    Label_AgeShow.Text = string.Empty;
+                    Label_BloodGroupShow.Text = string.Empty;
+                    TextBox_VisitDate.Text = string.Empty;
+                    TextBox_VisitTime.Text = string.Empty;
+                    DropDownList_VisitType.SelectedIndex = 0;
+                    DropDownList_Doctor.SelectedIndex = 0;
+                    DropDownList_Staff.SelectedIndex = 0;
+                    TextBox_Temperature.Text = string.Empty;
+                    TextBox_Blood.Text = string.Empty;
+                    TextBox_Pressure.Text = string.Empty;
+                    TextBox_Oxygen.Text = string.Empty;
+                    TextBox_Height.Text = string.Empty;
+                    TextBox_Weight.Text = string.Empty;
+                    TextBox_Symptoms.Text = string.Empty;
+                    TextBox_Diagnosis.Text = string.Empty;
+
+                    virtualMedicationDataTable.Rows.Clear();
+                    virtualInvestigationDataTable.Rows.Clear();
+
+                    showVirtualMedicationData();
+                    showVirtualInvestigationData();
+                }
+            }
+            catch (Exception ex)
+            {
+                Response.Write(ex.Message);
+            }
+            finally
+            {
+                db.CloseConnection();
+            }
+
+        }
+
+        protected void Button_Clear_Click(object sender, EventArgs e)
+        {
+            DropDownList_Registration.SelectedIndex = 0;
+            TextBox_PatientName.Text = string.Empty;
+            Label_AgeShow.Text = string.Empty;
+            Label_BloodGroupShow.Text = string.Empty;
+            TextBox_VisitDate.Text = string.Empty;
+            TextBox_VisitTime.Text = string.Empty;
+            DropDownList_VisitType.SelectedIndex = 0;
+            DropDownList_Doctor.SelectedIndex = 0;
+            DropDownList_Staff.SelectedIndex = 0;
+            TextBox_Temperature.Text = string.Empty;
+            TextBox_Blood.Text = string.Empty;
+            TextBox_Pressure.Text = string.Empty;
+            TextBox_Oxygen.Text = string.Empty;
+            TextBox_Height.Text = string.Empty;
+            TextBox_Weight.Text = string.Empty;
+            TextBox_Symptoms.Text = string.Empty;
+            TextBox_Diagnosis.Text = string.Empty;
+
+            //TextBox_Medicine.Text = string.Empty;
+            //DropDownList_Frequency.SelectedIndex = 0;
+            //TextBox_Days.Text = string.Empty;
+            //TextBox_Investigation.Text = string.Empty;
+            //TextBox_Result.Text = string.Empty;
+
+            virtualMedicationDataTable.Rows.Clear();
+            virtualInvestigationDataTable.Rows.Clear();
+
+            showVirtualMedicationData();
+            showVirtualInvestigationData();
+        }
     }
 }

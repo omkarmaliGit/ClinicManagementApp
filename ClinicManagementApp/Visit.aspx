@@ -21,7 +21,8 @@
                     <div class="mb-4 row">
                         <asp:Label ID="Label_Registration" runat="server" Text="Registration Number : " class="col-sm-4 col-form-label"></asp:Label>
                         <div class="col">
-                            <asp:DropDownList ID="DropDownList_Registration" runat="server" placeholder="Select Registration Number" class="form-select" OnSelectedIndexChanged="DropDownList_Registration_SelectedIndexChanged" AutoPostBack="true">
+                            <asp:TextBox ID="TextBox_Registration" runat="server" type="text" placeholder="Enter Registration Number" class="form-control" AutoPostBack="true" OnTextChanged="TextBox_Registration_TextChanged"></asp:TextBox>
+                            <asp:DropDownList ID="DropDownList_Registration" runat="server" placeholder="Select Registration Number" class="form-select" OnSelectedIndexChanged="DropDownList_Registration_SelectedIndexChanged" AutoPostBack="true" Visible="false">
                                 <%--<asp:ListItem>Select Registration Number</asp:ListItem>--%>
                             </asp:DropDownList>
                         </div>
@@ -122,9 +123,9 @@
                         <asp:Label ID="Label_BloodPressure" runat="server" Text="Blood Pressure : " class="col-sm-4 col-form-label"></asp:Label>
                         <div class="col">
                             <asp:TextBox ID="TextBox_Blood" runat="server" type="text" class="form-control" CssClass="smallBox"></asp:TextBox>
-                            <asp:Label ID="Label_B" runat="server" Text=" / " class="col-form-label" CssClass="smallLabel"></asp:Label>
+                            <asp:Label ID="Label_Blood" runat="server" Text=" / " class="col-form-label" CssClass="smallLabel"></asp:Label>
                             <asp:TextBox ID="TextBox_Pressure" runat="server" type="text" class="form-control" CssClass="smallBox"></asp:TextBox>
-                            <asp:Label ID="Label_P" runat="server" Text=" mmHg" class="col-form-label" CssClass="smallLabel"></asp:Label>
+                            <asp:Label ID="Label_Pressure" runat="server" Text=" mmHg" class="col-form-label" CssClass="smallLabel"></asp:Label>
                         </div>
                     </div>
 
@@ -328,18 +329,18 @@
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Investigation">
                                             <EditItemTemplate>
-                                                <asp:TextBox ID="TextBox_InvestigationEdit" runat="server" Text='<%# Bind("investigation") %>'></asp:TextBox>
+                                                <asp:TextBox ID="TextBox_InvestigationEdit" runat="server" Text='<%# Bind("investigation") %>' TextMode="MultiLine"></asp:TextBox>
                                             </EditItemTemplate>
                                             <ItemTemplate>
-                                                <asp:Label ID="Label_InvestigationItem" runat="server" Text='<%# Bind("investigation") %>'></asp:Label>
+                                                <asp:Label ID="Label_InvestigationItem" runat="server" Text='<%# Bind("investigation") %>' class="wordWrapingLabel" Width="200px"></asp:Label>
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Result">
                                             <EditItemTemplate>
-                                                <asp:TextBox ID="TextBox_ResultEdit" runat="server" Text='<%# Bind("result") %>'></asp:TextBox>
+                                                <asp:TextBox ID="TextBox_ResultEdit" runat="server" Text='<%# Bind("result") %>' TextMode="MultiLine"></asp:TextBox>
                                             </EditItemTemplate>
                                             <ItemTemplate>
-                                                <asp:Label ID="Label_ResultItem" runat="server" Text='<%# Bind("result") %>'></asp:Label>
+                                                <asp:Label ID="Label_ResultItem" runat="server" Text='<%# Bind("result") %>' class="wordWrapingLabel" Width="200px"></asp:Label>
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                     </Columns>
@@ -369,9 +370,9 @@
         </div>
 
         <div class="mb-3 text-center">
-            <asp:Button ID="Button_Save" runat="server" Text="Save" class="btn btn-primary mx-2" />
+            <asp:Button ID="Button_Save" runat="server" Text="Save" class="btn btn-primary mx-2" OnClick="Button_Save_Click"/>
             <asp:Button ID="Button_Clear" runat="server" Text="Clear" class="btn btn-primary mx-2"
-                OnClientClick="this.form.reset(); return false;" />
+                OnClick="Button_Clear_Click" />
         </div>
 
     </div>

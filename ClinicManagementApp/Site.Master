@@ -15,7 +15,7 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <form id="formSite" runat="server">
+    <form id="formSite" runat="server" autocomplete="off">
         <div id="navDiv">
             <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark" id="mainNav">
 

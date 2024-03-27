@@ -82,3 +82,8 @@ h5 {
     color: red;
 }
 
+.wordWrapingLabel {
+    /*width: 200px;*/
+    overflow: hidden;
+    overflow-wrap: break-word;
+}
