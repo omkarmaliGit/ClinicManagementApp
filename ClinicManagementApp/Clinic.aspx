@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Clinic.aspx.cs" Inherits="ClinicManagementApp.Clinic" %>
+<%@ Register Src="~/ModalPopups/alertPopup.ascx" TagName="alertModalPopup" TagPrefix="uc" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -111,5 +112,6 @@
         </div>
     </div>
 
+    <uc:alertModalPopup ID="alertPopup" runat="server" />
 
 </asp:Content>

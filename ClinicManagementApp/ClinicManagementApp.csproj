@@ -97,7 +97,7 @@
     <Content Include="Images\medicalStoreIcon.png" />
     <Content Include="Images\profile.png" />
     <Content Include="Login.aspx" />
-    <Content Include="ModalPopup.ascx" />
+    <Content Include="ModalPopups\alertPopup.ascx" />
     <Content Include="Patient.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -172,12 +172,12 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ModalPopup.ascx.cs">
-      <DependentUpon>ModalPopup.ascx</DependentUpon>
+    <Compile Include="ModalPopups\alertPopup.ascx.cs">
+      <DependentUpon>alertPopup.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ModalPopup.ascx.designer.cs">
-      <DependentUpon>ModalPopup.ascx</DependentUpon>
+    <Compile Include="ModalPopups\alertPopup.ascx.designer.cs">
+      <DependentUpon>alertPopup.ascx</DependentUpon>
     </Compile>
     <Compile Include="Patient.aspx.cs">
       <DependentUpon>Patient.aspx</DependentUpon>

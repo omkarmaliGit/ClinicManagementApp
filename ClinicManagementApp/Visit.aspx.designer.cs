@@ -51,6 +51,15 @@ namespace ClinicManagementApp
         protected global::System.Web.UI.WebControls.DropDownList DropDownList_Registration;
 
         /// <summary>
+        /// RequiredFieldValidator_Registration control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_Registration;
+
+        /// <summary>
         /// Label_PatientName control.
         /// </summary>
         /// <remarks>
@@ -67,6 +76,15 @@ namespace ClinicManagementApp
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox_PatientName;
+
+        /// <summary>
+        /// RequiredFieldValidator_PatientName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_PatientName;
 
         /// <summary>
         /// Label_Age control.
@@ -571,5 +589,14 @@ namespace ClinicManagementApp
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button_Clear;
+
+        /// <summary>
+        /// alertPopup control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::ClinicManagementApp.ModalPopups.alertPopup alertPopup;
     }
 }

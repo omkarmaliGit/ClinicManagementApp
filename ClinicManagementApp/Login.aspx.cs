@@ -36,17 +36,17 @@ namespace ClinicManagementApp
                     }
                     else
                     {
-                        Response.Write("Wrong Password");
+                        alertPopup.ShowPopup("Wrong Password");
                     }
                 }
                 else
                 {
-                    Response.Write("User Not Found");
+                    alertPopup.ShowPopup("User Not Found");
                 }
             }
             catch (Exception ex)
             {
-                Response.Write(ex.Message);
+                alertPopup.ShowPopup($"Exception Catched : {ex.Message}");
             }
             finally
             {

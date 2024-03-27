@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="ClinicManagementApp.Login" %>
 
+<%@ Register Src="~/ModalPopups/alertPopup.ascx" TagName="alertModalPopup" TagPrefix="uc" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -13,7 +15,7 @@
         <form id="form1" runat="server">
 
             <div class="mb-3 text-center">
-                <asp:Image ID="ImageLogin" runat="server" ImageUrl="~/Images/profile.png" Width="75px" class="pb-4"/>
+                <asp:Image ID="ImageLogin" runat="server" ImageUrl="~/Images/profile.png" Width="75px" class="pb-4" />
                 <h1>Admin Login</h1>
                 <br />
             </div>
@@ -37,6 +39,8 @@
             <div class="mb-4 text-center">
                 <asp:Button ID="Button_Login" runat="server" Text="Signin" class="btn btn-primary btn-lg" OnClick="Button_Login_Click" />
             </div>
+
+            <uc:alertModalPopup ID="alertPopup" runat="server" />
 
         </form>
     </div>

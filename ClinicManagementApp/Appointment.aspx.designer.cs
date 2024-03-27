@@ -24,12 +24,21 @@ namespace ClinicManagementApp
         protected global::System.Web.UI.WebControls.Button Button1;
 
         /// <summary>
-        /// ModalPopup1 control.
+        /// Button2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::ClinicManagementApp.ModalPopup ModalPopup1;
+        protected global::System.Web.UI.WebControls.Button Button2;
+
+        /// <summary>
+        /// alertPopup control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::ClinicManagementApp.ModalPopups.alertPopup alertPopup;
     }
 }

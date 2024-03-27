@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Visit.aspx.cs" Inherits="ClinicManagementApp.Visit" %>
 
+<%@ Register Src="~/ModalPopups/alertPopup.ascx" TagName="alertModalPopup" TagPrefix="uc" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -19,19 +21,21 @@
                 <div class="col px-4">
 
                     <div class="mb-4 row">
-                        <asp:Label ID="Label_Registration" runat="server" Text="Registration Number : " class="col-sm-4 col-form-label"></asp:Label>
+                        <asp:Label ID="Label_Registration" runat="server" Text="&lt;sup class=&quot;red&quot;&gt;*&lt;/sup&gt;Registration Number : "
+                            class="col-sm-4 col-form-label"></asp:Label>
                         <div class="col">
                             <asp:TextBox ID="TextBox_Registration" runat="server" type="text" placeholder="Enter Registration Number" class="form-control" AutoPostBack="true" OnTextChanged="TextBox_Registration_TextChanged"></asp:TextBox>
                             <asp:DropDownList ID="DropDownList_Registration" runat="server" placeholder="Select Registration Number" class="form-select" OnSelectedIndexChanged="DropDownList_Registration_SelectedIndexChanged" AutoPostBack="true" Visible="false">
-                                <%--<asp:ListItem>Select Registration Number</asp:ListItem>--%>
                             </asp:DropDownList>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator_Registration" runat="server" ErrorMessage="Please Enter Registration Number" ControlToValidate="TextBox_Registration" ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
                     </div>
 
                     <div class="mb-4 row">
-                        <asp:Label ID="Label_PatientName" runat="server" Text="Patient Name : " class="col-sm-4 col-form-label"></asp:Label>
+                        <asp:Label ID="Label_PatientName" runat="server"  Text="&lt;sup class=&quot;red&quot;&gt;*&lt;/sup&gt;Patient Name : " class="col-sm-4 col-form-label"></asp:Label>
                         <div class="col">
                             <asp:TextBox ID="TextBox_PatientName" runat="server" type="text" placeholder="Enter Patient Name" class="form-control" AutoPostBack="true" OnTextChanged="TextBox_PatientName_TextChanged"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator_PatientName" runat="server" ErrorMessage="Please Enter Patient Name" ControlToValidate="TextBox_PatientName" ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
                     </div>
 
@@ -54,21 +58,22 @@
                 <div class="col px-4">
 
                     <div class="mb-4 row">
-                        <asp:Label ID="Label_VisitDate" runat="server" Text="Visit Date : " class="col-sm-4 col-form-label"></asp:Label>
+                        <asp:Label ID="Label_VisitDate" runat="server"  Text="&lt;sup class=&quot;red&quot;&gt;*&lt;/sup&gt;Visit Date : " class="col-sm-4 col-form-label"></asp:Label>
                         <div class="col">
                             <asp:TextBox ID="TextBox_VisitDate" runat="server" type="text" placeholder="Enter Visit Date" class="form-control" TextMode="Date"></asp:TextBox>
                         </div>
                     </div>
 
                     <div class="mb-4 row">
-                        <asp:Label ID="Label_VisitTime" runat="server" Text="Visit Time : " class="col-sm-4 col-form-label"></asp:Label>
+                        <asp:Label ID="Label_VisitTime" runat="server"  Text="&lt;sup class=&quot;red&quot;&gt;*&lt;/sup&gt;Visit Time : " class="col-sm-4 col-form-label"></asp:Label>
                         <div class="col">
                             <asp:TextBox ID="TextBox_VisitTime" runat="server" type="text" placeholder="Enter Visit Time" class="form-control" TextMode="Time"></asp:TextBox>
+                            <%-- vhgfhgd --%>
                         </div>
                     </div>
 
                     <div class="mb-4 row">
-                        <asp:Label ID="Label_VisitType" runat="server" Text="Visit Type : " class="col-sm-4 col-form-label"></asp:Label>
+                        <asp:Label ID="Label_VisitType" runat="server"  Text="&lt;sup class=&quot;red&quot;&gt;*&lt;/sup&gt;Visit Type : " class="col-sm-4 col-form-label"></asp:Label>
                         <div class="col">
                             <asp:DropDownList ID="DropDownList_VisitType" runat="server" placeholder="Select Visit Type" class="form-select">
                                 <asp:ListItem>Select Visit Type</asp:ListItem>
@@ -79,19 +84,17 @@
                     </div>
 
                     <div class="mb-4 row">
-                        <asp:Label ID="Label_Doctor" runat="server" Text="Doctor Name : " class="col-sm-4 col-form-label"></asp:Label>
+                        <asp:Label ID="Label_Doctor" runat="server"  Text="&lt;sup class=&quot;red&quot;&gt;*&lt;/sup&gt;Doctor Name : " class="col-sm-4 col-form-label"></asp:Label>
                         <div class="col">
                             <asp:DropDownList ID="DropDownList_Doctor" runat="server" placeholder="Select Doctor Name" class="form-select">
-                                <%--<asp:ListItem>Select Doctor Name</asp:ListItem>--%>
                             </asp:DropDownList>
                         </div>
                     </div>
 
                     <div class="mb-4 row">
-                        <asp:Label ID="Label_Staff" runat="server" Text="Staff Name : " class="col-sm-4 col-form-label"></asp:Label>
+                        <asp:Label ID="Label_Staff" runat="server"  Text="&lt;sup class=&quot;red&quot;&gt;*&lt;/sup&gt;Staff Name : " class="col-sm-4 col-form-label"></asp:Label>
                         <div class="col">
                             <asp:DropDownList ID="DropDownList_Staff" runat="server" placeholder="Select Staff Name" class="form-select">
-                                <%--<asp:ListItem>Select Staff Name</asp:ListItem>--%>
                             </asp:DropDownList>
                         </div>
                     </div>
@@ -164,14 +167,14 @@
             <div class="row d-flex justify-content-center">
 
                 <div class="mb-4 row">
-                    <asp:Label ID="Label_Symptoms" runat="server" Text="Symptoms : " class="col-sm-3 col-form-label"></asp:Label>
+                    <asp:Label ID="Label_Symptoms" runat="server"  Text="&lt;sup class=&quot;red&quot;&gt;*&lt;/sup&gt;Symptoms : " class="col-sm-3 col-form-label"></asp:Label>
                     <div class="col">
                         <asp:TextBox ID="TextBox_Symptoms" runat="server" type="text" placeholder="Enter Symptoms" class="form-control" TextMode="MultiLine"></asp:TextBox>
                     </div>
                 </div>
 
                 <div class="mb-4 row">
-                    <asp:Label ID="Label_Diagnosis" runat="server" Text="Diagnosis : " class="col-sm-3 col-form-label"></asp:Label>
+                    <asp:Label ID="Label_Diagnosis" runat="server"  Text="&lt;sup class=&quot;red&quot;&gt;*&lt;/sup&gt;Diagnosis : " class="col-sm-3 col-form-label"></asp:Label>
                     <div class="col">
                         <asp:TextBox ID="TextBox_Diagnosis" runat="server" type="text" placeholder="Enter Diagnosis" class="form-control" TextMode="MultiLine"></asp:TextBox>
                     </div>
@@ -194,14 +197,14 @@
                             <div class="col p-4">
 
                                 <div class="mb-4 row">
-                                    <asp:Label ID="Label_Medicine" runat="server" Text="Medicine : " class="col-sm-4 col-form-label"></asp:Label>
+                                    <asp:Label ID="Label_Medicine" runat="server"  Text="&lt;sup class=&quot;red&quot;&gt;*&lt;/sup&gt;Medicine : " class="col-sm-4 col-form-label"></asp:Label>
                                     <div class="col">
                                         <asp:TextBox ID="TextBox_Medicine" runat="server" type="text" placeholder="Enter Medicine Name" class="form-control"></asp:TextBox>
                                     </div>
                                 </div>
 
                                 <div class="mb-4 row">
-                                    <asp:Label ID="Label_Frequency" runat="server" Text="Medicine Frequency : " class="col-sm-4 col-form-label"></asp:Label>
+                                    <asp:Label ID="Label_Frequency" runat="server"  Text="&lt;sup class=&quot;red&quot;&gt;*&lt;/sup&gt;Medicine Frequency : " class="col-sm-4 col-form-label"></asp:Label>
                                     <div class="col">
                                         <asp:DropDownList ID="DropDownList_Frequency" runat="server" placeholder="Select Medicine Frequency" class="form-select">
                                             <asp:ListItem>Select Medicine Frequency</asp:ListItem>
@@ -215,7 +218,7 @@
                                 </div>
 
                                 <div class="mb-4 row">
-                                    <asp:Label ID="Label_Days" runat="server" Text="No. of Days : " class="col-sm-4 col-form-label"></asp:Label>
+                                    <asp:Label ID="Label_Days" runat="server"  Text="&lt;sup class=&quot;red&quot;&gt;*&lt;/sup&gt;No. of Days : " class="col-sm-4 col-form-label"></asp:Label>
                                     <div class="col">
                                         <asp:TextBox ID="TextBox_Days" runat="server" type="number" placeholder="Enter No. of Days" class="form-control" TextMode="Number"></asp:TextBox>
                                     </div>
@@ -294,14 +297,14 @@
                                 <div class="row d-flex justify-content-center">
 
                                     <div class="mb-4 row">
-                                        <asp:Label ID="Label_Investigation" runat="server" Text="Investigation : " class="col-sm-3 col-form-label"></asp:Label>
+                                        <asp:Label ID="Label_Investigation" runat="server"  Text="&lt;sup class=&quot;red&quot;&gt;*&lt;/sup&gt;Investigation : " class="col-sm-3 col-form-label"></asp:Label>
                                         <div class="col">
                                             <asp:TextBox ID="TextBox_Investigation" runat="server" type="text" placeholder="Enter Investigation" class="form-control" TextMode="MultiLine"></asp:TextBox>
                                         </div>
                                     </div>
 
                                     <div class="mb-4 row">
-                                        <asp:Label ID="Label_Result" runat="server" Text="Result : " class="col-sm-3 col-form-label"></asp:Label>
+                                        <asp:Label ID="Label_Result" runat="server"  Text="&lt;sup class=&quot;red&quot;&gt;*&lt;/sup&gt;Result : " class="col-sm-3 col-form-label"></asp:Label>
                                         <div class="col">
                                             <asp:TextBox ID="TextBox_Result" runat="server" type="text" placeholder="Enter Result" class="form-control" TextMode="MultiLine"></asp:TextBox>
                                         </div>
@@ -311,7 +314,7 @@
 
                                 <div class="mb-3 text-center">
                                     <asp:Button ID="Button_InvestigationAdd" runat="server" Text="Add" class="btn btn-primary mx-2" OnClick="Button_InvestigationAdd_Click" />
-                                    <asp:Button ID="Button_InvestigationClear" runat="server" Text="Clear" class="btn btn-primary mx-2" OnClick="Button_InvestigationClear_Click"/>
+                                    <asp:Button ID="Button_InvestigationClear" runat="server" Text="Clear" class="btn btn-primary mx-2" OnClick="Button_InvestigationClear_Click" />
                                 </div>
 
 
@@ -370,11 +373,13 @@
         </div>
 
         <div class="mb-3 text-center">
-            <asp:Button ID="Button_Save" runat="server" Text="Save" class="btn btn-primary mx-2" OnClick="Button_Save_Click"/>
+            <asp:Button ID="Button_Save" runat="server" Text="Save" class="btn btn-primary mx-2" OnClick="Button_Save_Click" />
             <asp:Button ID="Button_Clear" runat="server" Text="Clear" class="btn btn-primary mx-2"
                 OnClick="Button_Clear_Click" />
         </div>
 
     </div>
+
+    <uc:alertModalPopup ID="alertPopup" runat="server" />
 
 </asp:Content>

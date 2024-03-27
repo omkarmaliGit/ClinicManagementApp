@@ -87,3 +87,28 @@ h5 {
     overflow: hidden;
     overflow-wrap: break-word;
 }
+
+
+
+/** PopUP CSS **/
+
+#popupButton {
+    display: none;
+}
+
+.popupPanel {
+    min-width: 350px;
+    min-height: 150px;
+    max-width: 750px;
+    max-height: 400px;
+    padding: 30px;
+    font-family: "Kodchasan", sans-serif;
+    color: black;
+    background-color: #c2d0df;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid Black;
+    border-radius: 5px;
+}

@@ -20,7 +20,12 @@ namespace ClinicManagementApp
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            ModalPopup1.ShowPopup();
+            alertPopup.ShowPopup("normal");
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            alertPopup.ShowPopup("aass sssssssssss sssssssssssss ssssssss  usajhiahs asgilusiug asighfiuagsiuf iasgiluf sghdfiluasiuliasuhifh asifgiuasgilf asugf asifgs");
         }
     }
 }

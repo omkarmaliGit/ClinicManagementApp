@@ -7,21 +7,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ClinicManagementApp
+namespace ClinicManagementApp.ModalPopups
 {
 
 
-    public partial class ModalPopup
+    public partial class alertPopup
     {
-
-        /// <summary>
-        /// ScriptManager control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager;
 
         /// <summary>
         /// ModalPopupExtender control.
