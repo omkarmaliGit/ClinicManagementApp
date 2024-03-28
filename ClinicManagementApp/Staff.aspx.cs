@@ -33,7 +33,7 @@ namespace ClinicManagementApp
             }
             catch (Exception ex)
             {
-                Response.Write(ex.Message);
+                alertPopup.ShowPopup($"Exception Catched : {ex.Message}");
             }
             finally
             {
@@ -50,7 +50,8 @@ namespace ClinicManagementApp
                     if (GridView_Staff.SelectedRow == null)
                     {
                         db.setData($"insert into staff(name, gender, aadharCard, birthDate, joiningDate, qualification, experience, workType, address, area, city, pincode, contact, email, password) values ('{TextBox_Name.Text}','{RadioButtonList_Gender.SelectedValue}','{TextBox_Aadhar.Text}','{TextBox_DOB.Text}','{TextBox_DOJ.Text}','{DropDownList_Qualification.SelectedValue}','{TextBox_Experience.Text}','{DropDownList_WorkType.SelectedValue}','{TextBox_Address.Text}','{TextBox_Area.Text}','{TextBox_City.Text}','{TextBox_Pincode.Text}','{TextBox_Contact.Text}','{TextBox_Email.Text}','{TextBox_Password.Text}')");
-                        Response.Write("Record Inserted Successfully");
+                        //Response.Write("Record Inserted Successfully");
+                        alertPopup.ShowPopup("New Record Inserted in Staff Successfully");
                     }
                     else
                     {
@@ -59,10 +60,10 @@ namespace ClinicManagementApp
                         int staffID = Convert.ToInt32(l1.Text);
 
                         db.setData($"update staff set name = '{TextBox_Name.Text}', gender = '{RadioButtonList_Gender.SelectedValue}', aadharCard = '{TextBox_Aadhar.Text}', birthDate = '{TextBox_DOB.Text}', joiningDate = '{TextBox_DOJ.Text}', qualification = '{DropDownList_Qualification.SelectedValue}', experience = '{TextBox_Experience.Text}', workType = '{DropDownList_WorkType.SelectedValue}', address = '{TextBox_Address.Text}', area = '{TextBox_Area.Text}', city = '{TextBox_City.Text}', pincode = '{TextBox_Pincode.Text}', contact = '{TextBox_Contact.Text}', email = '{TextBox_Email.Text}', password = '{TextBox_Password.Text}' where staffID='{staffID}'");
-                        Response.Write("Record Updated Successfully");
+                        //Response.Write("Record Updated Successfully");
+                        alertPopup.ShowPopup("Record Updated in Staff Successfully");
                         GridView_Staff.SelectedIndex = -1;
                     }
-
 
                     TextBox_Name.Text = String.Empty;
                     RadioButtonList_Gender.SelectedIndex = -1;
@@ -88,7 +89,7 @@ namespace ClinicManagementApp
             }
             catch (Exception ex)
             {
-                Response.Write(ex.Message);
+                alertPopup.ShowPopup($"Exception Catched : {ex.Message}");
             }
             finally
             {
@@ -146,12 +147,13 @@ namespace ClinicManagementApp
             try
             {
                 db.setData($"delete from staff where staffID = {l1.Text}");
-                Response.Write("Deleted");
+                //Response.Write("Deleted");
+                alertPopup.ShowPopup("Record Deleted from Staff");
                 showTable();
             }
             catch (Exception ex)
             {
-                Response.Write(ex.Message);
+                alertPopup.ShowPopup($"Exception Catched : {ex.Message}");
             }
             finally
             {
@@ -192,7 +194,7 @@ namespace ClinicManagementApp
             }
             catch (Exception ex)
             {
-                Response.Write(ex.Message);
+                alertPopup.ShowPopup($"Exception Catched : {ex.Message}");
             }
             finally
             {

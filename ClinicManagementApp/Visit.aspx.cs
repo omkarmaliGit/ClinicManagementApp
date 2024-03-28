@@ -92,7 +92,7 @@ namespace ClinicManagementApp
             }
             catch (Exception ex)
             {
-                Response.Write(ex.Message);
+                alertPopup.ShowPopup($"Exception Catched : {ex.Message}");
             }
             finally
             {
@@ -114,7 +114,7 @@ namespace ClinicManagementApp
             }
             catch (Exception ex)
             {
-                Response.Write(ex.Message);
+                alertPopup.ShowPopup($"Exception Catched : {ex.Message}");
             }
             finally
             {
@@ -136,7 +136,7 @@ namespace ClinicManagementApp
             }
             catch (Exception ex)
             {
-                Response.Write(ex.Message);
+                alertPopup.ShowPopup($"Exception Catched : {ex.Message}");
             }
             finally
             {
@@ -181,7 +181,8 @@ namespace ClinicManagementApp
                     }
                     else
                     {
-                        Response.Write("Not Registered");
+                        //Response.Write("Not Registered");
+                        alertPopup.ShowPopup("No Record Found");
                         TextBox_PatientName.Text = string.Empty;
                         Label_AgeShow.Text = string.Empty;
                         Label_BloodGroupShow.Text = string.Empty;
@@ -191,7 +192,7 @@ namespace ClinicManagementApp
             }
             catch (Exception ex)
             {
-                Response.Write(ex.Message);
+                alertPopup.ShowPopup($"Exception Catched : {ex.Message}");
             }
             finally
             {
@@ -262,7 +263,8 @@ namespace ClinicManagementApp
 
                     if (count < 1)
                     {
-                        Response.Write("No Record");
+                        //Response.Write("No Record");
+                        alertPopup.ShowPopup("No Record Found");
                         DropDownList_Registration.Visible = false;
                         TextBox_Registration.Visible = true;
                         TextBox_Registration.Text = "";
@@ -274,7 +276,7 @@ namespace ClinicManagementApp
             }
             catch (Exception ex)
             {
-                Response.Write(ex.Message);
+                alertPopup.ShowPopup($"Exception Catched : {ex.Message}");
             }
             finally
             {
@@ -314,7 +316,7 @@ namespace ClinicManagementApp
             }
             catch (Exception ex)
             {
-                Response.Write(ex.Message);
+                alertPopup.ShowPopup($"Exception Catched : {ex.Message}");
             }
             finally
             {
@@ -352,7 +354,7 @@ namespace ClinicManagementApp
             }
             catch (Exception ex)
             {
-                Response.Write(ex.Message);
+                alertPopup.ShowPopup($"Exception Catched : {ex.Message}");
             }
         }
 
@@ -431,7 +433,7 @@ namespace ClinicManagementApp
             }
             catch (Exception ex)
             {
-                Response.Write(ex.Message);
+                alertPopup.ShowPopup($"Exception Catched : {ex.Message}");
             }
         }
 
@@ -494,7 +496,7 @@ namespace ClinicManagementApp
                     //string bp = $"{TextBox_Blood.Text}/{TextBox_Pressure.Text}";
 
                     db.setData($"insert into visit (patientID, visitDate, visitTime, visitType, doctorID, staffID, temperature, bloodPressure, oxygen, height, weight, symptoms, diagnosis) values ('{DropDownList_Registration.SelectedValue}', '{TextBox_VisitDate.Text}', '{TextBox_VisitTime.Text}', '{DropDownList_VisitType.SelectedValue}', '{DropDownList_Doctor.SelectedValue}', '{DropDownList_Staff.SelectedValue}','{TextBox_Temperature.Text}', '{TextBox_Blood.Text}/{TextBox_Pressure.Text}', '{TextBox_Oxygen.Text}', '{TextBox_Height.Text}', '{TextBox_Weight.Text}', '{TextBox_Symptoms.Text}','{TextBox_Diagnosis.Text}')");
-                    Response.Write("Record Inserted Successfully");
+                    //Response.Write("Record Inserted Successfully");
 
                     visitID = Convert.ToInt32(db.getSingleData($"select max(visitID) from visit"));
                     db.CloseConnection();
@@ -509,11 +511,11 @@ namespace ClinicManagementApp
 
                         }
 
-                        Response.Write("Medication data saved successfully!");
+                        //Response.Write("Medication data saved successfully!");
                     }
                     else
                     {
-                        Response.Write("No medication data to save!");
+                        //Response.Write("No medication data to save!");
                     }
 
                     //invest
@@ -526,12 +528,14 @@ namespace ClinicManagementApp
 
                         }
 
-                        Response.Write("Investigation data saved successfully!");
+                        //Response.Write("Investigation data saved successfully!");
                     }
                     else
                     {
-                        Response.Write("No investigation data to save!");
+                        //Response.Write("No investigation data to save!");
                     }
+
+                    alertPopup.ShowPopup("New Record Inserted in Visit Successfully");
 
                     //finally
 
@@ -562,7 +566,7 @@ namespace ClinicManagementApp
             }
             catch (Exception ex)
             {
-                Response.Write(ex.Message);
+                alertPopup.ShowPopup($"Exception Catched : {ex.Message}");
             }
             finally
             {

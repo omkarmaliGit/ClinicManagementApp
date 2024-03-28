@@ -45,7 +45,7 @@ namespace ClinicManagementApp
             }
             catch (Exception ex)
             {
-                Response.Write(ex.Message);
+                alertPopup.ShowPopup($"Exception Catched : {ex.Message}");
             }
             finally
             {
@@ -66,19 +66,21 @@ namespace ClinicManagementApp
                         int clinicID = Convert.ToInt32(reader[0].ToString());
                         db.CloseConnection();
                         db.setData($"update clinic set name='{TextBox_Name.Text}', address='{TextBox_Address.Text}', area='{TextBox_Area.Text}', city='{TextBox_City.Text}', pincode='{TextBox_Pincode.Text}', contact='{TextBox_Contact.Text}', website='{TextBox_Website.Text}', email='{TextBox_Email.Text}', startTime='{TextBox_StartTime.Text}', endTime='{TextBox_EndTime.Text}' where clinicID = {clinicID}");
-                        Response.Write("Updated");
+                        //Response.Write("Updated");
+                        alertPopup.ShowPopup("Record Updated in Clinic Successfully");
                     }
                     else
                     {
                         db.CloseConnection();
                         db.setData($"insert into clinic (name, address, area, city, pincode, contact, website, email, startTime, endTime) values ('{TextBox_Name.Text}', '{TextBox_Address.Text}', '{TextBox_Area.Text}', '{TextBox_City.Text}', '{TextBox_Pincode.Text}', '{TextBox_Contact.Text}', '{TextBox_Website.Text}', '{TextBox_Email.Text}', '{TextBox_StartTime.Text}', '{TextBox_EndTime.Text}')");
-                        Response.Write("Inserted");
+                        //Response.Write("Inserted");
+                        alertPopup.ShowPopup("New Record Inserted in Clinic Successfully");
                     }
                 }
             }
             catch (Exception ex)
             {
-                Response.Write(ex.Message);
+                alertPopup.ShowPopup($"Exception Catched : {ex.Message}");
             }
             finally
             {
