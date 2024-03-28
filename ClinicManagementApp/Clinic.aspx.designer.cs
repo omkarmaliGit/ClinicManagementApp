@@ -15,6 +15,15 @@ namespace ClinicManagementApp
     {
 
         /// <summary>
+        /// ScriptManagerStaff control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManagerStaff;
+
+        /// <summary>
         /// Label_Name control.
         /// </summary>
         /// <remarks>
@@ -130,6 +139,15 @@ namespace ClinicManagementApp
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox_Pincode;
+
+        /// <summary>
+        /// RegularExpressionValidator_Pincode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator_Pincode;
 
         /// <summary>
         /// Label_Contact control.

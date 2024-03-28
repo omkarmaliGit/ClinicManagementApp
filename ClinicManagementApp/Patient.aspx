@@ -120,10 +120,11 @@
                                     </div>
                                 </div>
 
-                                <div class="mb-4 row">
+                                <div class="mb-1 row">
                                     <asp:Label ID="Label_Pincode" runat="server" Text="Pincode : " class="col-sm-3 col-form-label"></asp:Label>
                                     <div class="col">
                                         <asp:TextBox ID="TextBox_Pincode" runat="server" type="number" placeholder="Enter Pincode" class="form-control" TextMode="Number"></asp:TextBox>
+                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator_Pincode" runat="server" ErrorMessage="only 6 digit allowed" ControlToValidate="TextBox_Pincode" ValidationExpression="^[0-9]{6}$" ForeColor="Red"></asp:RegularExpressionValidator>
                                     </div>
                                 </div>
 
@@ -220,7 +221,7 @@
 
                             <div class="mb-3 text-center">
                                 <asp:Button ID="Button_Save" runat="server" Text="Save" class="btn btn-primary mx-2" OnClick="Button_Save_Click" />
-                                <asp:Button ID="Button_Clear" runat="server" Text="Clear" class="btn btn-primary mx-2" OnClick="Button_Clear_Click" />
+                                <asp:Button ID="Button_Clear" runat="server" Text="Clear" class="btn btn-primary mx-2" OnClick="Button_Clear_Click" CausesValidation="false"/>
                             </div>
 
                         </div>

@@ -20,7 +20,7 @@
 
                 <div class="col px-4">
 
-                    <div class="mb-4 row">
+                    <div class="mb-1 row">
                         <asp:Label ID="Label_Registration" runat="server" Text="&lt;sup class=&quot;red&quot;&gt;*&lt;/sup&gt;Registration Number : "
                             class="col-sm-4 col-form-label"></asp:Label>
                         <div class="col">
@@ -31,8 +31,8 @@
                         </div>
                     </div>
 
-                    <div class="mb-4 row">
-                        <asp:Label ID="Label_PatientName" runat="server"  Text="&lt;sup class=&quot;red&quot;&gt;*&lt;/sup&gt;Patient Name : " class="col-sm-4 col-form-label"></asp:Label>
+                    <div class="mb-1 row">
+                        <asp:Label ID="Label_PatientName" runat="server" Text="&lt;sup class=&quot;red&quot;&gt;*&lt;/sup&gt;Patient Name : " class="col-sm-4 col-form-label"></asp:Label>
                         <div class="col">
                             <asp:TextBox ID="TextBox_PatientName" runat="server" type="text" placeholder="Enter Patient Name" class="form-control" AutoPostBack="true" OnTextChanged="TextBox_PatientName_TextChanged"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator_PatientName" runat="server" ErrorMessage="Please Enter Patient Name" ControlToValidate="TextBox_PatientName" ForeColor="Red"></asp:RequiredFieldValidator>
@@ -57,45 +57,49 @@
 
                 <div class="col px-4">
 
-                    <div class="mb-4 row">
-                        <asp:Label ID="Label_VisitDate" runat="server"  Text="&lt;sup class=&quot;red&quot;&gt;*&lt;/sup&gt;Visit Date : " class="col-sm-4 col-form-label"></asp:Label>
+                    <div class="mb-1 row">
+                        <asp:Label ID="Label_VisitDate" runat="server" Text="&lt;sup class=&quot;red&quot;&gt;*&lt;/sup&gt;Visit Date : " class="col-sm-4 col-form-label"></asp:Label>
                         <div class="col">
                             <asp:TextBox ID="TextBox_VisitDate" runat="server" type="text" placeholder="Enter Visit Date" class="form-control" TextMode="Date"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator_VisitDate" runat="server" ErrorMessage="Please Enter Visit Date" ControlToValidate="TextBox_VisitDate" ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
                     </div>
 
-                    <div class="mb-4 row">
-                        <asp:Label ID="Label_VisitTime" runat="server"  Text="&lt;sup class=&quot;red&quot;&gt;*&lt;/sup&gt;Visit Time : " class="col-sm-4 col-form-label"></asp:Label>
+                    <div class="mb-1 row">
+                        <asp:Label ID="Label_VisitTime" runat="server" Text="&lt;sup class=&quot;red&quot;&gt;*&lt;/sup&gt;Visit Time : " class="col-sm-4 col-form-label"></asp:Label>
                         <div class="col">
                             <asp:TextBox ID="TextBox_VisitTime" runat="server" type="text" placeholder="Enter Visit Time" class="form-control" TextMode="Time"></asp:TextBox>
-                            <%-- vhgfhgd --%>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator_VisitTime" runat="server" ErrorMessage="Please Enter Visit Time" ControlToValidate="TextBox_VisitTime" ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
                     </div>
 
-                    <div class="mb-4 row">
-                        <asp:Label ID="Label_VisitType" runat="server"  Text="&lt;sup class=&quot;red&quot;&gt;*&lt;/sup&gt;Visit Type : " class="col-sm-4 col-form-label"></asp:Label>
+                    <div class="mb-1 row">
+                        <asp:Label ID="Label_VisitType" runat="server" Text="&lt;sup class=&quot;red&quot;&gt;*&lt;/sup&gt;Visit Type : " class="col-sm-4 col-form-label"></asp:Label>
                         <div class="col">
                             <asp:DropDownList ID="DropDownList_VisitType" runat="server" placeholder="Select Visit Type" class="form-select">
-                                <asp:ListItem>Select Visit Type</asp:ListItem>
+                                <asp:ListItem Value="">Select Visit Type</asp:ListItem>
                                 <asp:ListItem>With Appointment</asp:ListItem>
                                 <asp:ListItem>Without Appointment</asp:ListItem>
                             </asp:DropDownList>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator_VisitType" runat="server" ErrorMessage="Please Select Visit Type" ControlToValidate="DropDownList_VisitType" ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
                     </div>
 
-                    <div class="mb-4 row">
-                        <asp:Label ID="Label_Doctor" runat="server"  Text="&lt;sup class=&quot;red&quot;&gt;*&lt;/sup&gt;Doctor Name : " class="col-sm-4 col-form-label"></asp:Label>
+                    <div class="mb-1 row">
+                        <asp:Label ID="Label_Doctor" runat="server" Text="&lt;sup class=&quot;red&quot;&gt;*&lt;/sup&gt;Doctor Name : " class="col-sm-4 col-form-label"></asp:Label>
                         <div class="col">
                             <asp:DropDownList ID="DropDownList_Doctor" runat="server" placeholder="Select Doctor Name" class="form-select">
                             </asp:DropDownList>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator_Doctor" runat="server" ErrorMessage="Please Select Doctor" ControlToValidate="DropDownList_Doctor" ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
                     </div>
 
-                    <div class="mb-4 row">
-                        <asp:Label ID="Label_Staff" runat="server"  Text="&lt;sup class=&quot;red&quot;&gt;*&lt;/sup&gt;Staff Name : " class="col-sm-4 col-form-label"></asp:Label>
+                    <div class="mb-1 row">
+                        <asp:Label ID="Label_Staff" runat="server" Text="&lt;sup class=&quot;red&quot;&gt;*&lt;/sup&gt;Staff Name : " class="col-sm-4 col-form-label"></asp:Label>
                         <div class="col">
                             <asp:DropDownList ID="DropDownList_Staff" runat="server" placeholder="Select Staff Name" class="form-select">
                             </asp:DropDownList>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator_Staff" runat="server" ErrorMessage="Please Select Staff" ControlToValidate="DropDownList_Staff" ForeColor="Red"></asp:RequiredFieldValidator>
                         </div>
                     </div>
 
@@ -166,17 +170,19 @@
 
             <div class="row d-flex justify-content-center">
 
-                <div class="mb-4 row">
-                    <asp:Label ID="Label_Symptoms" runat="server"  Text="&lt;sup class=&quot;red&quot;&gt;*&lt;/sup&gt;Symptoms : " class="col-sm-3 col-form-label"></asp:Label>
+                <div class="mb-1 row">
+                    <asp:Label ID="Label_Symptoms" runat="server" Text="&lt;sup class=&quot;red&quot;&gt;*&lt;/sup&gt;Symptoms : " class="col-sm-3 col-form-label"></asp:Label>
                     <div class="col">
                         <asp:TextBox ID="TextBox_Symptoms" runat="server" type="text" placeholder="Enter Symptoms" class="form-control" TextMode="MultiLine"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator_Symptoms" runat="server" ErrorMessage="Please Enter Symptoms" ControlToValidate="TextBox_Symptoms" ForeColor="Red"></asp:RequiredFieldValidator>
                     </div>
                 </div>
 
-                <div class="mb-4 row">
-                    <asp:Label ID="Label_Diagnosis" runat="server"  Text="&lt;sup class=&quot;red&quot;&gt;*&lt;/sup&gt;Diagnosis : " class="col-sm-3 col-form-label"></asp:Label>
+                <div class="mb-1 row">
+                    <asp:Label ID="Label_Diagnosis" runat="server" Text="&lt;sup class=&quot;red&quot;&gt;*&lt;/sup&gt;Diagnosis : " class="col-sm-3 col-form-label"></asp:Label>
                     <div class="col">
                         <asp:TextBox ID="TextBox_Diagnosis" runat="server" type="text" placeholder="Enter Diagnosis" class="form-control" TextMode="MultiLine"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator_Diagnosis" runat="server" ErrorMessage="Please Enter Diagnosis" ControlToValidate="TextBox_Diagnosis" ForeColor="Red"></asp:RequiredFieldValidator>
                     </div>
                 </div>
 
@@ -196,37 +202,40 @@
 
                             <div class="col p-4">
 
-                                <div class="mb-4 row">
-                                    <asp:Label ID="Label_Medicine" runat="server"  Text="&lt;sup class=&quot;red&quot;&gt;*&lt;/sup&gt;Medicine : " class="col-sm-4 col-form-label"></asp:Label>
+                                <div class="mb-1 row">
+                                    <asp:Label ID="Label_Medicine" runat="server" Text="&lt;sup class=&quot;red&quot;&gt;*&lt;/sup&gt;Medicine : " class="col-sm-4 col-form-label"></asp:Label>
                                     <div class="col">
                                         <asp:TextBox ID="TextBox_Medicine" runat="server" type="text" placeholder="Enter Medicine Name" class="form-control"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator_Medicine" runat="server" ErrorMessage="Please Enter Medicine" ControlToValidate="TextBox_Medicine" ForeColor="Red"  ValidationGroup="MediVali"></asp:RequiredFieldValidator>
                                     </div>
                                 </div>
 
-                                <div class="mb-4 row">
-                                    <asp:Label ID="Label_Frequency" runat="server"  Text="&lt;sup class=&quot;red&quot;&gt;*&lt;/sup&gt;Medicine Frequency : " class="col-sm-4 col-form-label"></asp:Label>
+                                <div class="mb-1 row">
+                                    <asp:Label ID="Label_Frequency" runat="server" Text="&lt;sup class=&quot;red&quot;&gt;*&lt;/sup&gt;Medicine Frequency : " class="col-sm-4 col-form-label"></asp:Label>
                                     <div class="col">
                                         <asp:DropDownList ID="DropDownList_Frequency" runat="server" placeholder="Select Medicine Frequency" class="form-select">
-                                            <asp:ListItem>Select Medicine Frequency</asp:ListItem>
+                                            <asp:ListItem Value="">Select Medicine Frequency</asp:ListItem>
                                             <asp:ListItem>Once a day</asp:ListItem>
                                             <asp:ListItem>Twice a day</asp:ListItem>
                                             <asp:ListItem>Trice a day</asp:ListItem>
                                             <asp:ListItem>Early Morning</asp:ListItem>
                                             <asp:ListItem>Before Meal</asp:ListItem>
                                         </asp:DropDownList>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator_Frequency" runat="server" ErrorMessage="Please Select Frequency" ControlToValidate="DropDownList_Frequency" ForeColor="Red"  ValidationGroup="MediVali"></asp:RequiredFieldValidator>
                                     </div>
                                 </div>
 
-                                <div class="mb-4 row">
-                                    <asp:Label ID="Label_Days" runat="server"  Text="&lt;sup class=&quot;red&quot;&gt;*&lt;/sup&gt;No. of Days : " class="col-sm-4 col-form-label"></asp:Label>
+                                <div class="mb-2 row">
+                                    <asp:Label ID="Label_Days" runat="server" Text="&lt;sup class=&quot;red&quot;&gt;*&lt;/sup&gt;No. of Days : " class="col-sm-4 col-form-label"></asp:Label>
                                     <div class="col">
                                         <asp:TextBox ID="TextBox_Days" runat="server" type="number" placeholder="Enter No. of Days" class="form-control" TextMode="Number"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator_Days" runat="server" ErrorMessage="Please Enter Days" ControlToValidate="TextBox_Days" ForeColor="Red"  ValidationGroup="MediVali"></asp:RequiredFieldValidator>
                                     </div>
                                 </div>
 
-                                <div class="mb-3 text-center">
-                                    <asp:Button ID="Button_MedicineAdd" runat="server" Text="Add" class="btn btn-primary mx-2" OnClick="Button_MedicineAdd_Click" />
-                                    <asp:Button ID="Button_MedicineClear" runat="server" Text="Clear" class="btn btn-primary mx-2" OnClick="Button_MedicineClear_Click" />
+                                <div class="mb-2 text-center">
+                                    <asp:Button ID="Button_MedicineAdd" runat="server" Text="Add" class="btn btn-primary mx-2" OnClick="Button_MedicineAdd_Click" ValidationGroup="MediVali"/>
+                                    <asp:Button ID="Button_MedicineClear" runat="server" Text="Clear" class="btn btn-primary mx-2" OnClick="Button_MedicineClear_Click" CausesValidation="false" />
                                 </div>
 
                             </div>
@@ -296,25 +305,27 @@
 
                                 <div class="row d-flex justify-content-center">
 
-                                    <div class="mb-4 row">
-                                        <asp:Label ID="Label_Investigation" runat="server"  Text="&lt;sup class=&quot;red&quot;&gt;*&lt;/sup&gt;Investigation : " class="col-sm-3 col-form-label"></asp:Label>
+                                    <div class="mb-1 row">
+                                        <asp:Label ID="Label_Investigation" runat="server" Text="&lt;sup class=&quot;red&quot;&gt;*&lt;/sup&gt;Investigation : " class="col-sm-3 col-form-label"></asp:Label>
                                         <div class="col">
                                             <asp:TextBox ID="TextBox_Investigation" runat="server" type="text" placeholder="Enter Investigation" class="form-control" TextMode="MultiLine"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator_Investigation" runat="server" ErrorMessage="Please Enter Investigation" ControlToValidate="TextBox_Investigation" ForeColor="Red" ValidationGroup="InveVali"></asp:RequiredFieldValidator>
                                         </div>
                                     </div>
 
-                                    <div class="mb-4 row">
-                                        <asp:Label ID="Label_Result" runat="server"  Text="&lt;sup class=&quot;red&quot;&gt;*&lt;/sup&gt;Result : " class="col-sm-3 col-form-label"></asp:Label>
+                                    <div class="mb-2 row">
+                                        <asp:Label ID="Label_Result" runat="server" Text="&lt;sup class=&quot;red&quot;&gt;*&lt;/sup&gt;Result : " class="col-sm-3 col-form-label"></asp:Label>
                                         <div class="col">
                                             <asp:TextBox ID="TextBox_Result" runat="server" type="text" placeholder="Enter Result" class="form-control" TextMode="MultiLine"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator_Result" runat="server" ErrorMessage="Please Enter Result" ControlToValidate="TextBox_Result" ForeColor="Red" ValidationGroup="InveVali"></asp:RequiredFieldValidator>
                                         </div>
                                     </div>
 
                                 </div>
 
-                                <div class="mb-3 text-center">
-                                    <asp:Button ID="Button_InvestigationAdd" runat="server" Text="Add" class="btn btn-primary mx-2" OnClick="Button_InvestigationAdd_Click" />
-                                    <asp:Button ID="Button_InvestigationClear" runat="server" Text="Clear" class="btn btn-primary mx-2" OnClick="Button_InvestigationClear_Click" />
+                                <div class="mb-2 text-center">
+                                    <asp:Button ID="Button_InvestigationAdd" runat="server" Text="Add" class="btn btn-primary mx-2" OnClick="Button_InvestigationAdd_Click" ValidationGroup="InveVali"/>
+                                    <asp:Button ID="Button_InvestigationClear" runat="server" Text="Clear" class="btn btn-primary mx-2" OnClick="Button_InvestigationClear_Click" CausesValidation="false"/>
                                 </div>
 
 
@@ -375,7 +386,7 @@
         <div class="mb-3 text-center">
             <asp:Button ID="Button_Save" runat="server" Text="Save" class="btn btn-primary mx-2" OnClick="Button_Save_Click" />
             <asp:Button ID="Button_Clear" runat="server" Text="Clear" class="btn btn-primary mx-2"
-                OnClick="Button_Clear_Click" />
+                OnClick="Button_Clear_Click" CausesValidation="false"/>
         </div>
 
     </div>

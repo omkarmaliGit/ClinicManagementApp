@@ -141,6 +141,15 @@ namespace ClinicManagementApp
         protected global::System.Web.UI.WebControls.TextBox TextBox_VisitDate;
 
         /// <summary>
+        /// RequiredFieldValidator_VisitDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_VisitDate;
+
+        /// <summary>
         /// Label_VisitTime control.
         /// </summary>
         /// <remarks>
@@ -157,6 +166,15 @@ namespace ClinicManagementApp
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox_VisitTime;
+
+        /// <summary>
+        /// RequiredFieldValidator_VisitTime control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_VisitTime;
 
         /// <summary>
         /// Label_VisitType control.
@@ -177,6 +195,15 @@ namespace ClinicManagementApp
         protected global::System.Web.UI.WebControls.DropDownList DropDownList_VisitType;
 
         /// <summary>
+        /// RequiredFieldValidator_VisitType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_VisitType;
+
+        /// <summary>
         /// Label_Doctor control.
         /// </summary>
         /// <remarks>
@@ -195,6 +222,15 @@ namespace ClinicManagementApp
         protected global::System.Web.UI.WebControls.DropDownList DropDownList_Doctor;
 
         /// <summary>
+        /// RequiredFieldValidator_Doctor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_Doctor;
+
+        /// <summary>
         /// Label_Staff control.
         /// </summary>
         /// <remarks>
@@ -211,6 +247,15 @@ namespace ClinicManagementApp
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownList_Staff;
+
+        /// <summary>
+        /// RequiredFieldValidator_Staff control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_Staff;
 
         /// <summary>
         /// Label_Temperature control.
@@ -384,6 +429,15 @@ namespace ClinicManagementApp
         protected global::System.Web.UI.WebControls.TextBox TextBox_Symptoms;
 
         /// <summary>
+        /// RequiredFieldValidator_Symptoms control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_Symptoms;
+
+        /// <summary>
         /// Label_Diagnosis control.
         /// </summary>
         /// <remarks>
@@ -400,6 +454,15 @@ namespace ClinicManagementApp
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox_Diagnosis;
+
+        /// <summary>
+        /// RequiredFieldValidator_Diagnosis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_Diagnosis;
 
         /// <summary>
         /// TabContainerVisit control.
@@ -438,6 +501,15 @@ namespace ClinicManagementApp
         protected global::System.Web.UI.WebControls.TextBox TextBox_Medicine;
 
         /// <summary>
+        /// RequiredFieldValidator_Medicine control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_Medicine;
+
+        /// <summary>
         /// Label_Frequency control.
         /// </summary>
         /// <remarks>
@@ -456,6 +528,15 @@ namespace ClinicManagementApp
         protected global::System.Web.UI.WebControls.DropDownList DropDownList_Frequency;
 
         /// <summary>
+        /// RequiredFieldValidator_Frequency control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_Frequency;
+
+        /// <summary>
         /// Label_Days control.
         /// </summary>
         /// <remarks>
@@ -472,6 +553,15 @@ namespace ClinicManagementApp
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox_Days;
+
+        /// <summary>
+        /// RequiredFieldValidator_Days control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_Days;
 
         /// <summary>
         /// Button_MedicineAdd control.
@@ -528,6 +618,15 @@ namespace ClinicManagementApp
         protected global::System.Web.UI.WebControls.TextBox TextBox_Investigation;
 
         /// <summary>
+        /// RequiredFieldValidator_Investigation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_Investigation;
+
+        /// <summary>
         /// Label_Result control.
         /// </summary>
         /// <remarks>
@@ -544,6 +643,15 @@ namespace ClinicManagementApp
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox_Result;
+
+        /// <summary>
+        /// RequiredFieldValidator_Result control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_Result;
 
         /// <summary>
         /// Button_InvestigationAdd control.

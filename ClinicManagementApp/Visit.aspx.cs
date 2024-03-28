@@ -80,7 +80,7 @@ namespace ClinicManagementApp
         {
             try
             {
-                DropDownList_Registration.Items.Add(new ListItem("Select Registration Number"));
+                DropDownList_Registration.Items.Add(new ListItem("Select Registration Number",""));
 
                 SqlDataReader reader = db.getData($"select patientID from patient");
 
@@ -102,7 +102,7 @@ namespace ClinicManagementApp
 
             try
             {
-                DropDownList_Doctor.Items.Add(new ListItem("Select Doctor Name"));
+                DropDownList_Doctor.Items.Add(new ListItem("Select Doctor Name",""));
 
                 SqlDataReader reader = db.getData($"select staffID, name from staff where workType = 'Doctor'");
 
@@ -124,7 +124,7 @@ namespace ClinicManagementApp
 
             try
             {
-                DropDownList_Staff.Items.Add(new ListItem("Select Staff Name"));
+                DropDownList_Staff.Items.Add(new ListItem("Select Staff Name",""));
 
                 SqlDataReader reader = db.getData($"select staffID, name from staff");
 
@@ -260,7 +260,7 @@ namespace ClinicManagementApp
                         TextBox_PatientName.Text = tempName;
                     }
 
-                    if (count<1)
+                    if (count < 1)
                     {
                         Response.Write("No Record");
                         DropDownList_Registration.Visible = false;
@@ -334,19 +334,21 @@ namespace ClinicManagementApp
         {
             try
             {
-                DataRow newRow = virtualMedicationDataTable.NewRow();
-                newRow["name"] = TextBox_Medicine.Text;
-                newRow["frequency"] = DropDownList_Frequency.SelectedValue;
-                newRow["noOfDays"] = TextBox_Days.Text;
+                if (TextBox_Medicine.Text != null && DropDownList_Frequency.SelectedIndex != 0 && TextBox_Days.Text != null)
+                {
+                    DataRow newRow = virtualMedicationDataTable.NewRow();
+                    newRow["name"] = TextBox_Medicine.Text;
+                    newRow["frequency"] = DropDownList_Frequency.SelectedValue;
+                    newRow["noOfDays"] = TextBox_Days.Text;
 
-                virtualMedicationDataTable.Rows.Add(newRow);
+                    virtualMedicationDataTable.Rows.Add(newRow);
 
-                showVirtualMedicationData();
+                    showVirtualMedicationData();
 
-                TextBox_Medicine.Text = string.Empty;
-                DropDownList_Frequency.SelectedIndex = 0;
-                TextBox_Days.Text = string.Empty;
-
+                    TextBox_Medicine.Text = string.Empty;
+                    DropDownList_Frequency.SelectedIndex = 0;
+                    TextBox_Days.Text = string.Empty;
+                }
             }
             catch (Exception ex)
             {
@@ -414,17 +416,18 @@ namespace ClinicManagementApp
         {
             try
             {
-                DataRow newRow = virtualInvestigationDataTable.NewRow();
-                newRow["investigation"] = TextBox_Investigation.Text;
-                newRow["result"] = TextBox_Result.Text;
+                if (TextBox_Investigation.Text != "" && TextBox_Result.Text != "") {
+                    DataRow newRow = virtualInvestigationDataTable.NewRow();
+                    newRow["investigation"] = TextBox_Investigation.Text;
+                    newRow["result"] = TextBox_Result.Text;
 
-                virtualInvestigationDataTable.Rows.Add(newRow);
+                    virtualInvestigationDataTable.Rows.Add(newRow);
 
-                showVirtualInvestigationData();
+                    showVirtualInvestigationData();
 
-                TextBox_Investigation.Text = string.Empty;
-                TextBox_Result.Text = string.Empty;
-
+                    TextBox_Investigation.Text = string.Empty;
+                    TextBox_Result.Text = string.Empty;
+                }
             }
             catch (Exception ex)
             {
@@ -486,7 +489,7 @@ namespace ClinicManagementApp
         {
             try
             {
-                if (DropDownList_Registration.SelectedIndex != 0 && TextBox_PatientName.Text != "" && DropDownList_VisitType.SelectedIndex != 0 && DropDownList_Doctor.SelectedIndex != 0 && DropDownList_Staff.SelectedIndex != 0)
+                if (DropDownList_Registration.SelectedIndex != 0 && TextBox_PatientName.Text != "" && TextBox_VisitDate.Text != null && TextBox_VisitTime.Text != null && DropDownList_VisitType.SelectedIndex != 0 && DropDownList_Doctor.SelectedIndex != 0 && DropDownList_Staff.SelectedIndex != 0)
                 {
                     //string bp = $"{TextBox_Blood.Text}/{TextBox_Pressure.Text}";
 

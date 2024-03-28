@@ -13,6 +13,7 @@
 <body>
     <div class="container d-flex justify-content-center align-items-center" style="min-height: 95vh">
         <form id="form1" runat="server">
+            <asp:ScriptManager ID="ScriptManagerStaff" runat="server"></asp:ScriptManager>
 
             <div class="mb-3 text-center">
                 <asp:Image ID="ImageLogin" runat="server" ImageUrl="~/Images/profile.png" Width="75px" class="pb-4" />
