@@ -151,6 +151,7 @@
                                     <div class="col">
                                         <asp:TextBox ID="TextBox_DOB" runat="server" type="date" placeholder="Enter Date of Birth" class="form-control" TextMode="Date"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator_DOB" runat="server" ErrorMessage="Please Enter Date of birth" ControlToValidate="TextBox_DOB" ForeColor="Red"></asp:RequiredFieldValidator>
+                                        <%--<asp:CustomValidator ID="CustomValidator_DOB" runat="server" ErrorMessage="future date not allowed" ControlToValidate="TextBox_DOB" OnServerValidate="CustomValidator_DOB_ServerValidate" ForeColor="Red"></asp:CustomValidator>--%>
                                     </div>
                                 </div>
 

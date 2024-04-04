@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Staff.aspx.cs" Inherits="ClinicManagementApp.Staff" %>
 <%@ Register Src="~/ModalPopups/alertPopup.ascx" TagName="alertModalPopup" TagPrefix="uc" %>
+<%@ Register Src="~/ModalPopups/deletePopup.ascx" TagName="deleteModalPopup" TagPrefix="uc" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -246,5 +247,6 @@
     </ajaxToolkit:TabContainer>
 
     <uc:alertModalPopup ID="alertPopup" runat="server" />
+    <uc:deleteModalPopup ID="deletePopup" runat="server" />
 
 </asp:Content>

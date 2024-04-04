@@ -143,13 +143,15 @@ namespace ClinicManagementApp
         {
             GridViewRow row = GridView_Staff.Rows[e.RowIndex];
             Label l1 = (Label)row.FindControl("Label_StaffID");
+            int staffID = Convert.ToInt32(l1.Text);
 
             try
             {
-                db.setData($"delete from staff where staffID = {l1.Text}");
+                //db.setData($"delete from staff where staffID = {l1.Text}");
                 //Response.Write("Deleted");
-                alertPopup.ShowPopup("Record Deleted from Staff");
-                showTable();
+                deletePopup.ShowPopup($"delete from staff where staffID = {staffID}");
+                //alertPopup.ShowPopup("Record Deleted from Staff");
+                //showTable();
             }
             catch (Exception ex)
             {

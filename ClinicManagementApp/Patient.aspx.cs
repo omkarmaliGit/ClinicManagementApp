@@ -626,7 +626,31 @@ namespace ClinicManagementApp
 
 
 
+        ///customvali
+        protected void CustomValidator_DOB_ServerValidate(object source, ServerValidateEventArgs args)
+        {
 
+            DateTime selectedDate;
+            if (DateTime.TryParse(TextBox_DOB.Text, out selectedDate))
+            {
+
+                if (selectedDate > DateTime.Today)
+                {
+
+                    args.IsValid = false;
+                }
+                else
+                {
+
+                    args.IsValid = true;
+                }
+            }
+            else
+            {
+
+                args.IsValid = false;
+            }
+        }
 
     }
 }

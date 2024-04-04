@@ -472,5 +472,14 @@ namespace ClinicManagementApp
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::ClinicManagementApp.ModalPopups.alertPopup alertPopup;
+
+        /// <summary>
+        /// deletePopup control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::ClinicManagementApp.ModalPopups.deletePopup deletePopup;
     }
 }
