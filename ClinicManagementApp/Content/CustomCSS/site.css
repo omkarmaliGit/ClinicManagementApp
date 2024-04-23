@@ -112,3 +112,36 @@ h5 {
     border: 1px solid Black;
     border-radius: 5px;
 }
+
+
+/*** Appointment ***/
+
+.headerCell {
+    font-weight: 700;
+    border: 1px solid black;
+    text-align: center;
+}
+
+.cellBorder {
+    min-height: 50px;
+    min-width: 150px;
+    padding: 10px;
+    border: 1px solid black;
+    text-align: center;
+}
+
+.btnBook {
+    background-color: seagreen;
+    border: 1px solid seagreen;
+    font-weight: 500;
+    min-width: 120px;
+    min-height: 20px;
+}
+
+.btnBooked {
+    background-color: indianred;
+    border: 1px solid indianred;
+    font-weight: 500;
+    min-width: 120px;
+    min-height: 20px;
+}

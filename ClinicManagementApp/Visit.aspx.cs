@@ -406,6 +406,15 @@ namespace ClinicManagementApp
             showVirtualMedicationData();
         }
 
+        protected void GridViewMedication_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
+        {
+            DataRow dr = virtualMedicationDataTable.Rows[e.NewSelectedIndex];
+
+            TextBox_Medicine.Text = dr[0].ToString();
+            DropDownList_Frequency.SelectedIndex = -1;
+            DropDownList_Frequency.Items.FindByValue(dr[1].ToString()).Selected = true;
+            TextBox_Days.Text = dr[2].ToString();
+        }
 
         /* Investigation */
         protected void showVirtualInvestigationData()
@@ -607,5 +616,7 @@ namespace ClinicManagementApp
             showVirtualMedicationData();
             showVirtualInvestigationData();
         }
+
+       
     }
 }

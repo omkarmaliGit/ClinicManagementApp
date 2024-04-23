@@ -1,18 +1,14 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="ClinicManagementApp.Login" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/User.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="ClinicManagementApp.Login" %>
 
 <%@ Register Src="~/ModalPopups/alertPopup.ascx" TagName="alertModalPopup" TagPrefix="uc" %>
 
-<!DOCTYPE html>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-    <link type="text/css" href="../Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="Content/CustomCSS/site.css" rel="stylesheet" />
-</head>
-<body>
-    <div class="container d-flex justify-content-center align-items-center" style="min-height: 95vh">
-        <form id="form1" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+
+    <div class="container d-flex justify-content-center align-items-center dashboardDiv">
+        <div>
             <asp:ScriptManager ID="ScriptManagerStaff" runat="server"></asp:ScriptManager>
 
             <div class="mb-3 text-center">
@@ -28,7 +24,7 @@
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator_LoginID" runat="server" ErrorMessage="Please Enter Login ID" ControlToValidate="TextBox_LoginID" ForeColor="Red"></asp:RequiredFieldValidator>
                 <asp:RegularExpressionValidator ID="RegularExpressionValidator_LoginID" runat="server" ErrorMessage="Please Enter Valid Login ID" ControlToValidate="TextBox_LoginID" ValidationExpression="^[a-zA-Z]+[0-9_]*[a-zA-Z]+$" ForeColor="Red"></asp:RegularExpressionValidator>
             </div>
-            <div class="mb-3">
+            <div class="mb-4">
                 <%--<asp:Label ID="Label_Password" runat="server" Text="Password : " class="form-label"></asp:Label>--%>
                 <asp:TextBox ID="TextBox_Password" runat="server" type="password" placeholder="Password" class="form-control"></asp:TextBox>
 
@@ -42,8 +38,7 @@
             </div>
 
             <uc:alertModalPopup ID="alertPopup" runat="server" />
-
-        </form>
+        </div>
     </div>
-</body>
-</html>
+
+</asp:Content>

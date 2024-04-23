@@ -33,7 +33,7 @@ namespace ClinicManagementApp.ModalPopups
 
         }
 
-        public void ShowPopup(string query)
+        public void ShowPopup (string query)
         {
             deleteQuery = query;
             ModalPopupExtender.Show();
@@ -51,7 +51,3 @@ namespace ClinicManagementApp.ModalPopups
         }
     }
 }
-
-
-
-

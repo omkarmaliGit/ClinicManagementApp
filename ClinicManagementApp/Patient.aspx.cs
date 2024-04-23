@@ -201,7 +201,7 @@ namespace ClinicManagementApp
 
 
 
-        /***************************************************************************************************************/
+        /*********************************************************************************************************/
 
 
         // Allergy
@@ -262,7 +262,7 @@ namespace ClinicManagementApp
                     {
                         db.setData($"insert into allergy(name, startDate, patientID) values ('{TextBox_AllergyAdd.Text}', '{TextBox_AllergyStartDateAdd.Text}', '{patientId}')");
                         //Response.Write("Record Inserted Successfully");
-                        alertPopup.ShowPopup("New Record Inserted in Allergy Successfully");
+                        //alertPopup.ShowPopup("New Record Inserted in Allergy Successfully");
                     }
 
                     TextBox_AllergyAdd.Text = "";

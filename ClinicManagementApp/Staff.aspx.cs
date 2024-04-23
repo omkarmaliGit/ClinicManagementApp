@@ -1,5 +1,6 @@
 ﻿using AjaxControlToolkit;
 using ClinicManagementApp.DataBaseConnection;
+using ClinicManagementApp.ModalPopups;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -147,10 +148,7 @@ namespace ClinicManagementApp
 
             try
             {
-                //db.setData($"delete from staff where staffID = {l1.Text}");
-                //Response.Write("Deleted");
                 deletePopup.ShowPopup($"delete from staff where staffID = {staffID}");
-                //alertPopup.ShowPopup("Record Deleted from Staff");
                 //showTable();
             }
             catch (Exception ex)

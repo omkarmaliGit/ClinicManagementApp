@@ -25,7 +25,8 @@ namespace ClinicManagementApp
         {
             try
             {
-                if (TextBox_LoginID.Text != "" && TextBox_Password.Text != "") {
+                if (TextBox_LoginID.Text != "" && TextBox_Password.Text != "")
+                {
 
                     SqlDataReader reader = db.getData($"select password,adminID from admin where loginID='{TextBox_LoginID.Text}'");
 
