@@ -1,7 +1,9 @@
-﻿using ClinicManagementApp.DataBaseConnection;
+﻿using AjaxControlToolkit;
+using ClinicManagementApp.DataBaseConnection;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -27,10 +29,9 @@ namespace ClinicManagementApp
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
             CreateTable();
-
         }
+
 
         private void CreateTable()
         {
@@ -49,11 +50,15 @@ namespace ClinicManagementApp
                 DateTime date = currentDate.AddDays(j);
                 string dateSlot = date.ToString("dd-MM-yyyy");
 
-                TableCell headerCell2 = new TableCell { Text = (dateSlot == currentDate.ToString("dd-MM-yyyy") ? "Today" : ((dateSlot == currentDate.AddDays(1).ToString("dd-MM-yyyy") ? "Tomorrow" : dateSlot))), CssClass = "headerCell" };
+                TableCell headerCell2 = new TableCell
+                {
+                    Text = (dateSlot == currentDate.ToString("dd-MM-yyyy") ? "Today" : ((dateSlot == currentDate.AddDays(1).ToString("dd-MM-yyyy") ? "Tomorrow" : dateSlot))),
+                    CssClass = "headerCell"
+                };
                 headerRow.Cells.Add(headerCell2);
             }
 
-            AppointmentTable.Rows.Add(headerRow); 
+            AppointmentTable.Rows.Add(headerRow);
 
             /** <-- Body --> **/
 
@@ -77,40 +82,61 @@ namespace ClinicManagementApp
                     TableRow timeSlotRow = new TableRow();
 
 
-
                     for (int j = 0; j < 5; j++)
                     {
                         DateTime date = currentDate.AddDays(j);
                         string dateSlot = date.ToString("dd-MM-yyyy");
 
                         string dateTime = dateSlot + "_" + timeSlot;
+                        string dateTimeID = date.ToString("dd") + date.ToString("MM") + date.ToString("yyyy") + "_" + hour + minute;
 
-                        TableCell todayCell = CreateButtonCell(dateTime, "Available"); // Today
-                        todayCell.CssClass = "cellBorder";
-                        timeSlotRow.Cells.Add(todayCell);
+                        bool isSlotBooked = IsTimeSlotBooked(dateSlot, timeSlot);
+                        db.CloseConnection();
+
+                        TableCell cell;
+                        if (!isSlotBooked)
+                        {
+                            cell = CreateButtonCell(dateTime, "Available", dateTimeID);
+                        }
+                        else
+                        {
+                            cell = new TableCell { Text = "Booked", CssClass = "cellBorder" };
+                        }
+
+                        cell.CssClass = "cellBorder";
+                        timeSlotRow.Cells.Add(cell);
                     }
-
-                    //TableCell tomorrowCell = CreateButtonCell(timeSlot, "Available", hour, minute, false); // Tomorrow
-                    //tomorrowCell.CssClass = "cellBorder";
-                    //timeSlotRow.Cells.Add(tomorrowCell);
 
                     AppointmentTable.Rows.Add(timeSlotRow);
 
                 }
 
             }
-
-            //startTime = startTime.Add(slotDuration);
-            //}
         }
 
-        private TableCell CreateButtonCell(string dateTime, string initialText)
+        private bool IsTimeSlotBooked(string dateSlot, string timeSlot)
+        {
+            SqlDataReader reader = db.getData($"select appointmentDate,appointmentTimeSlot from appointment");
+
+            if (reader.Read())
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+
+        }
+
+        private TableCell CreateButtonCell(string dateTime, string initialText, string dateTimeID)
         {
             TableCell cell = new TableCell();
 
             Button button = new Button
             {
-                ID = $"btn_{dateTime}",
+                ID = $"btn_{dateTimeID}",
                 Text = initialText,
                 CommandArgument = dateTime,
                 CssClass = "btnBook btn btn-success",
@@ -125,18 +151,31 @@ namespace ClinicManagementApp
 
         private void Button_Click(object sender, EventArgs e)
         {
-            Response.Write(e.ToString());
+            ModalPopupExtender.Show();
 
             Button button = (Button)sender;
             string timeSlot = button.CommandArgument;
             string newText = "booked";
 
             Response.Write(timeSlot.ToString());
-
+            Console.Write(timeSlot.ToString());
 
             button.Text = newText;
             button.CssClass = "btnBooked btn btn-Danger";
         }
 
+        protected void RadioButtonList_Patient_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(RadioButtonList_Patient.SelectedIndex == 0)
+            {
+                newDiv.Visible = true;
+                registeredDiv.Visible = false;
+            }
+            else
+            {
+                registeredDiv.Visible = true;
+                newDiv.Visible = false;
+            }
+        }
     }
 }
