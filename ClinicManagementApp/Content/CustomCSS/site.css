@@ -100,7 +100,7 @@ h5 {
     min-width: 350px;
     min-height: 150px;
     max-width: 750px;
-    max-height: 400px;
+    max-height: 450px;
     padding: 30px;
     font-family: "Kodchasan", sans-serif;
     color: black;
@@ -120,6 +120,10 @@ h5 {
     font-weight: 700;
     border: 1px solid black;
     text-align: center;
+}
+
+.headerRow {
+   background-color:gray;
 }
 
 .cellBorder {
@@ -144,4 +148,21 @@ h5 {
     font-weight: 500;
     min-width: 120px;
     min-height: 20px;
+}
+
+.popupPanelAppointment {
+    min-width: 550px;
+    min-height: 230px;
+    max-width: 750px;
+    max-height: 450px;
+    padding: 30px;
+    font-family: "Kodchasan", sans-serif;
+    color: black;
+    background-color: #c2d0df;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid Black;
+    border-radius: 5px;
 }
