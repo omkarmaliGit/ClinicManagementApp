@@ -150,6 +150,60 @@ namespace ClinicManagementApp
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_Name;
 
         /// <summary>
+        /// Label_DOB control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label_DOB;
+
+        /// <summary>
+        /// TextBox_DOB control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_DOB;
+
+        /// <summary>
+        /// RequiredFieldValidator_DOB control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_DOB;
+
+        /// <summary>
+        /// Label_BloodGroup control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label_BloodGroup;
+
+        /// <summary>
+        /// DropDownList_BloodGroup control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_BloodGroup;
+
+        /// <summary>
+        /// RequiredFieldValidator_BloodGroup control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_BloodGroup;
+
+        /// <summary>
         /// registeredDiv control.
         /// </summary>
         /// <remarks>

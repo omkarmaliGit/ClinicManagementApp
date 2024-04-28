@@ -322,7 +322,7 @@ namespace ClinicManagementApp
             {
                 db.CloseConnection();
             }
-        }
+        } 
 
 
         /* Medication */

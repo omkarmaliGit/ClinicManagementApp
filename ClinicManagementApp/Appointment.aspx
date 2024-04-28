@@ -64,6 +64,38 @@
                                 </div>
                             </div>
 
+                            <div class="mb-1 row">
+                                <asp:Label ID="Label_DOB" runat="server" Text="
+         &lt;sup class=&quot;red&quot;&gt;*&lt;/sup&gt;Date of Birth : 
+    "
+                                    class="col-sm-5 col-form-label"></asp:Label>
+                                <div class="col">
+                                    <asp:TextBox ID="TextBox_DOB" runat="server" type="date" placeholder="Enter Date of Birth" class="form-control" TextMode="Date"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator_DOB" runat="server" ErrorMessage="Please Enter DOB" ControlToValidate="TextBox_DOB" ForeColor="Red"></asp:RequiredFieldValidator>
+                                </div>
+                            </div>
+
+                            <div class="mb-1 row">
+                                <asp:Label ID="Label_BloodGroup" runat="server" Text="
+        &lt;sup class=&quot;red&quot;&gt;*&lt;/sup&gt;Blood Group : 
+    "
+                                    class="col-sm-5 col-form-label"></asp:Label>
+                                <div class="col">
+                                    <asp:DropDownList ID="DropDownList_BloodGroup" runat="server" placeholder="Select Blood Group" class="form-select">
+                                        <asp:ListItem>Select Blood Group</asp:ListItem>
+                                        <asp:ListItem>A+</asp:ListItem>
+                                        <asp:ListItem>B+</asp:ListItem>
+                                        <asp:ListItem>AB+</asp:ListItem>
+                                        <asp:ListItem>O+</asp:ListItem>
+                                        <asp:ListItem>A-</asp:ListItem>
+                                        <asp:ListItem>B-</asp:ListItem>
+                                        <asp:ListItem>AB-</asp:ListItem>
+                                        <asp:ListItem>O-</asp:ListItem>
+                                    </asp:DropDownList>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator_BloodGroup" runat="server" ErrorMessage="Select Blood Group" ControlToValidate="DropDownList_BloodGroup" ForeColor="Red"></asp:RequiredFieldValidator>
+                                </div>
+                            </div>
+
                         </div>
 
                         <div id="registeredDiv" class="" runat="server" visible="false">

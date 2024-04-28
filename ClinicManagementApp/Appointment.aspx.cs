@@ -69,7 +69,7 @@ namespace ClinicManagementApp
         private void CreateTable()
         {
             DateTime currentDate = DateTime.Today;
-
+            DateTime currentTime = DateTime.Now;
 
             /** <-- Header --> **/
 
@@ -107,10 +107,8 @@ namespace ClinicManagementApp
 
                 AppointmentTable.Rows.Add(timeRow);
 
-
                 for (int i = 0; i < 4; i++)
                 {
-
                     int minute = i * 15;
                     string timeSlot = $"{hour:D2}:{minute:D2}";
 
@@ -124,29 +122,41 @@ namespace ClinicManagementApp
                         string dateTime = dateSlot + "_" + timeSlot;
                         string dateTimeID = date.ToString("dd") + date.ToString("MM") + date.ToString("yyyy") + "_" + hour + minute;
 
-                        //TableCell cell;
-                        //cell = CreateButtonCell(dateTime, "Available", dateTimeID, "btnBook btn btn-success");
-
                         bool isSlotBooked = IsTimeSlotBooked(dateSlot, timeSlot);
                         db.CloseConnection();
 
                         TableCell cell;
                         if (!isSlotBooked)
                         {
-                            cell = CreateButtonCell(dateTime, "Available", dateTimeID, "btnBook btn btn-success");
+                            if (date < currentDate || (date == currentDate && TimeSpan.Parse(timeSlot) < currentTime.TimeOfDay))
+                            {
+                                cell = CreateButtonCell(dateTime, "UnAvailable", dateTimeID, "btn btn-info");
+                            }
+                            else
+                            {
+                                cell = CreateButtonCell(dateTime, "Available", dateTimeID, "btnBook btn btn-success");
+                            }
                         }
                         else
                         {
                             if (Session["adminID"] != null)
                             {
-                                SqlDataReader reader = db.getData($"select patientID from appointment where appointmentDate = {dateSlot} and appointmentTimeSlot = {timeSlot}");
-                                reader.Read();
-                                string name = reader[0].ToString();
-                                cell = new TableCell { Text = $"{name}" };
+                                SqlDataReader readerID = db.getData($"select patientID from appointment where appointmentDate = '{dateSlot}' and appointmentTimeSlot = '{timeSlot}'");
+                                readerID.Read();
+                                string nID = readerID[0].ToString();
+                                db.CloseConnection();
+
+                                SqlDataReader readerName = db.getData($"select name from patient where patientID = {nID}");
+                                readerName.Read();
+                                string name = readerName[0].ToString();
+                                db.CloseConnection();
+
+                                //cell = new TableCell { Text = $"{name}" };
+                                cell = CreateButtonCell(dateTime, $"{name}", dateTimeID, "btn btn-light");
                             }
                             else
                             {
-                                cell = CreateButtonCell(dateTime, "Booked", dateTimeID, "btnBook btn btn-Danger");
+                                cell = CreateButtonCell(dateTime, "Booked", dateTimeID, "btnBooked btn btn-danger");
                             }
                         }
 
@@ -175,7 +185,7 @@ namespace ClinicManagementApp
             }
         }
 
-        private TableCell CreateButtonCell(string dateTime, string initialText, string dateTimeID, string cssClass)
+        private TableCell CreateButtonCell(string dateTime, string initialText, string dateTimeID, string cssClas)
         {
             TableCell cell = new TableCell();
 
@@ -184,12 +194,12 @@ namespace ClinicManagementApp
                 ID = $"btn_{dateTimeID}",
                 Text = initialText,
                 CommandArgument = dateTime,
-                CssClass = cssClass,
+                CssClass = cssClas,
             };
 
             button.Click += Button_Click;
 
-            if (initialText == "Booked")
+            if (initialText != "Available")
             {
                 button.Enabled = false;
             }
@@ -282,18 +292,28 @@ namespace ClinicManagementApp
                 string date = dateTimeArray[0];
                 string time = dateTimeArray[1];
 
+                DateTime DT = DateTime.Today;
+                string todaysDate = DT.ToString("yyyy-MM-dd");
+
                 if (RadioButtonList_Patient.SelectedIndex == 0)
                 {
+                    db.setData($"insert into patient (name, birthDate, bloodGroup, registrationDate) values ('{TextBox_Name.Text}','{TextBox_DOB.Text}','{DropDownList_BloodGroup.SelectedValue}', '{todaysDate}')");
+
+                    SqlDataReader reader = db.getData($"select max(patientID) from patient where name = '{TextBox_Name.Text}'");
+                    reader.Read();
+                    string pID = reader[0].ToString();
+                    db.CloseConnection();
+
+                    db.setData($"insert into appointment (appointmentTimeSlot, appointmentDate, patientID, doctorID) values ('{time}','{date}','{pID}',{DropDownList_Doctor.SelectedValue})");
                 }
                 else
                 {
                     db.setData($"insert into appointment (appointmentTimeSlot, appointmentDate, patientID, doctorID) values ('{time}','{date}',{DropDownList_Registration.SelectedValue},{DropDownList_Doctor.SelectedValue})");
-
-                    ModalPopupExtender.Hide();
-
-                    alertPopup.ShowPopup("Appointment Booked");
-
                 }
+
+                ModalPopupExtender.Hide();
+                //alertPopup.ShowPopup("Appointment Booked");
+
             }
             catch (Exception ex)
             {
@@ -302,7 +322,7 @@ namespace ClinicManagementApp
             finally
             {
                 db.CloseConnection();
-                CreateTable();
+                Response.Redirect("Appointment.aspx");
             }
         }
 
