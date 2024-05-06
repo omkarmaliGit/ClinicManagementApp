@@ -71,7 +71,7 @@ namespace ClinicManagementApp
                         alertPopup.ShowPopup("New Record Inserted in Patient Successfully");
                         patientID = Convert.ToInt32(db.getSingleData($"select max(patientID) from patient"));
                     }
-                    else
+                    else 
                     {
                         GridViewRow row = GridView_Patient.SelectedRow;
                         Label l1 = (Label)row.FindControl("Label_PatientID");
@@ -135,13 +135,23 @@ namespace ClinicManagementApp
         {
             GridViewRow row = GridView_Patient.Rows[e.RowIndex];
             Label l1 = (Label)row.FindControl("Label_PatientID");
+            int patientID = Convert.ToInt32(l1.Text);
+            ViewState["patientID"] = patientID;
+            deleteModalPopupExtender.Show();
+        }
+
+        protected void deleteButton_Click(object sender, EventArgs e)
+        {
+            deletePatientRow();
+        }
+
+        protected void deletePatientRow()
+        {
+            int patientID = Convert.ToInt32(ViewState["patientID"]);
 
             try
             {
-                db.setData($"delete from patient where patientID = {l1.Text}");
-                //Response.Write("Deleted");
-                alertPopup.ShowPopup("Record Deleted from Patient");
-                showTable();
+                db.setData($"delete from patient where patientID = {patientID}");
             }
             catch (Exception ex)
             {
@@ -151,7 +161,10 @@ namespace ClinicManagementApp
             {
                 db.CloseConnection();
             }
+
+            showTable();
         }
+
 
         protected void GridView_Patient_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -584,6 +597,9 @@ namespace ClinicManagementApp
                 db.CloseConnection();
             }
         }
+
+
+
 
         protected void GridViewMedicine_RowEditing(object sender, GridViewEditEventArgs e)
         {

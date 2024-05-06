@@ -97,7 +97,16 @@ namespace ClinicManagementApp
 
             /** <-- Body --> **/
 
-            for (int hour = 10; hour <= 17; hour++)
+            SqlDataReader readerClinicTime = db.getData($"select startTime, endTime from clinic");
+            readerClinicTime.Read();
+            string clinicStartTime = readerClinicTime[0].ToString();
+            string clinicEndTime = readerClinicTime[1].ToString();
+            db.CloseConnection();
+
+            int startTime = Convert.ToInt32(clinicStartTime.Substring(0, 2));
+            int endTime = Convert.ToInt32(clinicEndTime.Substring(0, 2));
+
+            for (int hour = startTime; hour <= endTime; hour++)
             {
                 string hourString = hour < 12 ? $"{hour:D2}:00 AM" : ((hour - 12) == 0 ? $"{12}:00 PM" : $"{hour - 12:D2}:00 PM");
 

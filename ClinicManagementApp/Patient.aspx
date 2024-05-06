@@ -222,7 +222,7 @@
 
                             <div class="mb-3 text-center">
                                 <asp:Button ID="Button_Save" runat="server" Text="Save" class="btn btn-primary mx-2" OnClick="Button_Save_Click" />
-                                <asp:Button ID="Button_Clear" runat="server" Text="Clear" class="btn btn-primary mx-2" OnClick="Button_Clear_Click" CausesValidation="false"/>
+                                <asp:Button ID="Button_Clear" runat="server" Text="Clear" class="btn btn-primary mx-2" OnClick="Button_Clear_Click" CausesValidation="false" />
                             </div>
 
                         </div>
@@ -439,6 +439,21 @@
         </ajaxToolkit:TabPanel>
 
     </ajaxToolkit:TabContainer>
+
+
+    <div class="deletePopupDiv">
+        <ajaxToolkit:ModalPopupExtender ID="deleteModalPopupExtender" runat="server" TargetControlID="popupButton" PopupControlID="popupPanel" CancelControlID="cancelButton"></ajaxToolkit:ModalPopupExtender>
+
+        <asp:Button ID="popupButton" runat="server" Text="popupButton" Style="display: none" />
+
+        <asp:Panel ID="popupPanel" runat="server" class="popupPanel">
+            <asp:Label ID="popupLabel" runat="server" Text="Are you sure?" class="col-form-label wordWrapingLabel">
+            </asp:Label>
+            <asp:Button ID="deleteButton" runat="server" Text="Yes, Delete it!" class="btn btn-primary mx-2 mt-4" OnClick="deleteButton_Click" />
+            <asp:Button ID="cancelButton" runat="server" Text="Cancel" class="btn btn-primary mx-2 mt-4" />
+        </asp:Panel>
+    </div>
+
 
     <uc:alertModalPopup ID="alertPopup" runat="server" />
 

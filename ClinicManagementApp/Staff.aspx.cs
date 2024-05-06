@@ -66,22 +66,22 @@ namespace ClinicManagementApp
                         GridView_Staff.SelectedIndex = -1;
                     }
 
-                    //TextBox_Name.Text = String.Empty;
-                    //RadioButtonList_Gender.SelectedIndex = -1;
-                    //TextBox_Aadhar.Text = String.Empty;
-                    //TextBox_DOB.Text = String.Empty;
-                    //TextBox_DOJ.Text = String.Empty;
-                    //DropDownList_Qualification.SelectedIndex = 0;
-                    //TextBox_Experience.Text = String.Empty;
-                    //DropDownList_WorkType.SelectedIndex = 0;
-                    //TextBox_Address.Text = String.Empty;
-                    //TextBox_Area.Text = String.Empty;
-                    //TextBox_City.Text = String.Empty;
-                    //TextBox_Pincode.Text = String.Empty;
-                    //TextBox_Contact.Text = String.Empty;
-                    //TextBox_Email.Text = String.Empty;
-                    //TextBox_Password.Text = String.Empty;
-                    //TextBox_Name.Focus();
+                    TextBox_Name.Text = String.Empty;
+                    RadioButtonList_Gender.SelectedIndex = -1;
+                    TextBox_Aadhar.Text = String.Empty; 
+                    TextBox_DOB.Text = String.Empty;
+                    TextBox_DOJ.Text = String.Empty;
+                    DropDownList_Qualification.SelectedIndex = 0;
+                    TextBox_Experience.Text = String.Empty;
+                    DropDownList_WorkType.SelectedIndex = 0;
+                    TextBox_Address.Text = String.Empty;
+                    TextBox_Area.Text = String.Empty;
+                    TextBox_City.Text = String.Empty;
+                    TextBox_Pincode.Text = String.Empty;
+                    TextBox_Contact.Text = String.Empty;
+                    TextBox_Email.Text = String.Empty;
+                    TextBox_Password.Text = String.Empty;
+                    TextBox_Name.Focus();
 
                     db.CloseConnection();
 
@@ -147,21 +147,32 @@ namespace ClinicManagementApp
             GridViewRow row = GridView_Staff.Rows[e.RowIndex];
             Label l1 = (Label)row.FindControl("Label_StaffID");
             int staffID = Convert.ToInt32(l1.Text);
+            ViewState["staffID"] = staffID;
+            deleteModalPopupExtender.Show();
+        }
+
+        protected void deleteButton_Click(object sender, EventArgs e)
+        {
+            deleteStaffRow();
+        }
+
+        protected void deleteStaffRow()
+        {
+            int staffID = Convert.ToInt32(ViewState["staffID"]);
 
             try
             {
-                //deletePopup.ShowPopup($"delete from staff where staffID = {staffID}");
-                //showTable();
-            }
-            catch (Exception ex)
+                db.setData($"delete from staff where staffID = {staffID}");
+            }catch(Exception ex)
             {
                 alertPopup.ShowPopup($"Exception Catched : {ex.Message}");
             }
             finally
             {
                 db.CloseConnection();
-                Response.Redirect("Staff.aspx");
             }
+
+            showTable();
         }
 
         protected void GridView_Staff_SelectedIndexChanged(object sender, EventArgs e)
@@ -193,7 +204,6 @@ namespace ClinicManagementApp
                 }
 
                 TabContainerStaff.ActiveTabIndex = 1;
-
             }
             catch (Exception ex)
             {
@@ -205,5 +215,6 @@ namespace ClinicManagementApp
             }
         }
 
+        
     }
 }

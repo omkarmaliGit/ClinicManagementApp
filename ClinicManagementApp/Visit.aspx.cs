@@ -223,12 +223,12 @@ namespace ClinicManagementApp
                     string tempName = "";
 
                     DropDownList_Registration.Items.Clear();
-                    DropDownList_Registration.Items.Add(new ListItem("Select Registration Number"));
+                    DropDownList_Registration.Items.Add(new ListItem("Select Registration Number",""));
 
                     while (reader.Read())
                     {
                         TextBox_Registration.Text = reader[0].ToString();
-                        DropDownList_Registration.Items.Add(reader[0].ToString());
+                        DropDownList_Registration.Items.Add(new ListItem(reader[0].ToString(), reader[0].ToString()));
 
                         DateTime birthdate = DateTime.Parse(reader.GetDateTime(1).ToString("yyyy-MM-dd"));
                         DateTime today = DateTime.Today;
@@ -499,7 +499,7 @@ namespace ClinicManagementApp
         protected void Button_Save_Click(object sender, EventArgs e)
         {
             try
-            {
+            { 
                 if (DropDownList_Registration.SelectedIndex != 0 && TextBox_PatientName.Text != "" && TextBox_VisitDate.Text != null && TextBox_VisitTime.Text != null && DropDownList_VisitType.SelectedIndex != 0 && DropDownList_Doctor.SelectedIndex != 0 && DropDownList_Staff.SelectedIndex != 0)
                 {
                     //string bp = $"{TextBox_Blood.Text}/{TextBox_Pressure.Text}";

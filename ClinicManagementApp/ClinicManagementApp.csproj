@@ -98,7 +98,6 @@
     <Content Include="Images\profile.png" />
     <Content Include="Login.aspx" />
     <Content Include="ModalPopups\alertPopup.ascx" />
-    <Content Include="ModalPopups\deletePopup.ascx" />
     <Content Include="Patient.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -128,6 +127,8 @@
     <Content Include="Content\bootstrap-grid.rtl.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <None Include="Properties\PublishProfiles\wageboc-001-site1 - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\wageboc-001-site1 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
@@ -179,13 +180,6 @@
     </Compile>
     <Compile Include="ModalPopups\alertPopup.ascx.designer.cs">
       <DependentUpon>alertPopup.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="ModalPopups\deletePopup.ascx.cs">
-      <DependentUpon>deletePopup.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ModalPopups\deletePopup.ascx.designer.cs">
-      <DependentUpon>deletePopup.ascx</DependentUpon>
     </Compile>
     <Compile Include="Patient.aspx.cs">
       <DependentUpon>Patient.aspx</DependentUpon>
